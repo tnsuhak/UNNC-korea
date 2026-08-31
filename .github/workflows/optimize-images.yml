@@ -1,4 +1,4 @@
-name: Externalize embedded images
+name: UNNC preview maintenance
 
 on:
   pull_request:
@@ -7,13 +7,14 @@ on:
     paths:
       - index.html
       - scripts/optimize_embedded_images.py
+      - scripts/upgrade_site.py
       - .github/workflows/optimize-images.yml
 
 permissions:
   contents: write
 
 jobs:
-  optimize:
+  maintain:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
@@ -27,18 +28,26 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Extract embedded images without changing quality
+      - name: Keep existing homepage images externalized
         run: python scripts/optimize_embedded_images.py
 
-      - name: Commit lightweight original homepage
+      - name: Apply verified content and SEO upgrade
+        run: python scripts/upgrade_site.py
+
+      - name: Commit preview site changes
         shell: bash
         run: |
-          if git diff --quiet -- index.html assets/embedded; then
-            echo "No embedded-image extraction changes were needed."
+          git add index.html assets/embedded assets/guide.css \
+            unnc-admission-requirements-korea-2027.html \
+            unnc-tuition-scholarships-2027.html \
+            unnc-programmes-careers.html \
+            unnc-nottingham-degree-uk-campus.html \
+            robots.txt sitemap.xml
+          if git diff --cached --quiet; then
+            echo "No generated site changes were needed."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html assets/embedded
-          git commit -m "Externalize homepage images without changing design"
+          git commit -m "Upgrade UNNC content, SEO, and internal guides"
           git push origin "HEAD:${{ github.head_ref }}"
