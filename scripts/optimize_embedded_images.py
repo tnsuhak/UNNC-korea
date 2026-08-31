@@ -12,7 +12,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 INDEX = ROOT / "index.html"
 
 DATA_URI_RE = re.compile(
-    r"data:image/(?P<mime>png|jpeg|jpg|webp);base64,(?P<data>[A-Za-z0-9+/=]+)",
+    r"data:image/(?P<mime>png|jpeg|jpg);base64,(?P<data>[A-Za-z0-9+/=]+)",
     re.IGNORECASE,
 )
 
