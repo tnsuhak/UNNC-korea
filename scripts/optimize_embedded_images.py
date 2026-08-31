@@ -11,8 +11,9 @@ from PIL import Image, ImageOps
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 INDEX = ROOT / "index.html"
 
+# Some exported HTML wraps Base64 payloads across lines, so whitespace is allowed.
 DATA_URI_RE = re.compile(
-    r"data:image/(?P<mime>png|jpeg|jpg);base64,(?P<data>[A-Za-z0-9+/=]+)",
+    r"data:image/(?P<mime>png|jpeg|jpg);base64,(?P<data>[A-Za-z0-9+/=\r\n\t ]+)",
     re.IGNORECASE,
 )
 
@@ -64,7 +65,8 @@ def main() -> None:
     def replace(match: re.Match[str]) -> str:
         nonlocal image_number, optimized, original_image_bytes, optimized_image_bytes
         image_number += 1
-        raw = base64.b64decode(match.group("data"), validate=False)
+        compact_b64 = re.sub(r"\s+", "", match.group("data"))
+        raw = base64.b64decode(compact_b64, validate=False)
         original_image_bytes += len(raw)
 
         if len(raw) < MIN_IMAGE_BYTES:
