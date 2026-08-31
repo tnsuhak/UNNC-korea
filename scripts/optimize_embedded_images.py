@@ -11,7 +11,6 @@ from PIL import Image, ImageOps
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 INDEX = ROOT / "index.html"
 
-# Some exported HTML wraps Base64 payloads across lines, so whitespace is allowed.
 DATA_URI_RE = re.compile(
     r"data:image/(?P<mime>png|jpeg|jpg);base64,(?P<data>[A-Za-z0-9+/=\r\n\t ]+)",
     re.IGNORECASE,
@@ -28,23 +27,16 @@ def encode_webp(raw: bytes) -> tuple[bytes, tuple[int, int]] | None:
         with Image.open(io.BytesIO(raw)) as source:
             if getattr(source, "is_animated", False):
                 return None
-
             image = ImageOps.exif_transpose(source)
             width, height = image.size
             has_alpha = image.mode in ("RGBA", "LA") or "transparency" in image.info
-
             if max(width, height) > MAX_PHOTO_DIMENSION:
                 scale = MAX_PHOTO_DIMENSION / max(width, height)
                 image = image.resize(
                     (max(1, round(width * scale)), max(1, round(height * scale))),
                     Image.Resampling.LANCZOS,
                 )
-
-            if has_alpha:
-                image = image.convert("RGBA")
-            else:
-                image = image.convert("RGB")
-
+            image = image.convert("RGBA" if has_alpha else "RGB")
             out = io.BytesIO()
             image.save(out, format="WEBP", quality=WEBP_QUALITY, method=6)
             return out.getvalue(), image.size
@@ -55,6 +47,12 @@ def encode_webp(raw: bytes) -> tuple[bytes, tuple[int, int]] | None:
 def main() -> None:
     html = INDEX.read_text(encoding="utf-8")
     original_html_bytes = len(html.encode("utf-8"))
+
+    marker_count = html.lower().count("data:image/")
+    first_pos = html.lower().find("data:image/")
+    print(f"data:image markers: {marker_count}")
+    if first_pos >= 0:
+        print(f"first marker sample: {html[first_pos:first_pos + 100]!r}")
 
     image_number = 0
     optimized = 0
