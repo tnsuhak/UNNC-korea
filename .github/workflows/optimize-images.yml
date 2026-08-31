@@ -1,4 +1,4 @@
-name: UNNC preview maintenance
+name: UNNC preview quality checks
 
 on:
   pull_request:
@@ -9,14 +9,13 @@ on:
       - unnc-*.html
       - scripts/optimize_embedded_images.py
       - scripts/authoritative_tone.py
-      - scripts/tone_quickfix.py
       - .github/workflows/optimize-images.yml
 
 permissions:
   contents: write
 
 jobs:
-  maintain:
+  check:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
@@ -30,24 +29,21 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Keep existing homepage images externalized
+      - name: Keep embedded images externalized
         run: python scripts/optimize_embedded_images.py
 
-      - name: Rewrite source-attribution wording as direct facts
-        run: python scripts/tone_quickfix.py
+      - name: Check authoritative Korean tone
+        run: python scripts/authoritative_tone.py
 
-      - name: Apply and validate authoritative Korean tone
-        run: python scripts/authoritative_tone.py --fix
-
-      - name: Commit preview tone cleanup
+      - name: Commit image extraction only when needed
         shell: bash
         run: |
-          git add index.html unnc-*.html assets/embedded
-          if git diff --cached --quiet; then
-            echo "No tone cleanup changes were needed."
+          if git diff --quiet -- index.html assets/embedded; then
+            echo "No embedded-image extraction changes were needed."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Use direct authoritative Korean copy"
+          git add index.html assets/embedded
+          git commit -m "Externalize homepage images without changing design"
           git push origin "HEAD:${{ github.head_ref }}"
