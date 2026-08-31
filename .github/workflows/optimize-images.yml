@@ -1,4 +1,4 @@
-name: UNNC preview quality checks
+name: UNNC preview tone refinement
 
 on:
   pull_request:
@@ -7,15 +7,15 @@ on:
     paths:
       - index.html
       - unnc-*.html
-      - scripts/optimize_embedded_images.py
       - scripts/authoritative_tone.py
+      - scripts/tone_refine_once.py
       - .github/workflows/optimize-images.yml
 
 permissions:
   contents: write
 
 jobs:
-  check:
+  refine:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
@@ -29,21 +29,21 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Keep embedded images externalized
-        run: python scripts/optimize_embedded_images.py
+      - name: Refine visible Korean copy
+        run: python scripts/tone_refine_once.py
 
-      - name: Check authoritative Korean tone
+      - name: Validate authoritative Korean tone
         run: python scripts/authoritative_tone.py
 
-      - name: Commit image extraction only when needed
+      - name: Commit refined copy
         shell: bash
         run: |
-          if git diff --quiet -- index.html assets/embedded; then
-            echo "No embedded-image extraction changes were needed."
+          git add index.html unnc-*.html
+          if git diff --cached --quiet; then
+            echo "No tone refinements were needed."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html assets/embedded
-          git commit -m "Externalize homepage images without changing design"
+          git commit -m "Refine UNNC Korean copy to institutional tone"
           git push origin "HEAD:${{ github.head_ref }}"
