@@ -1,4 +1,4 @@
-name: Externalize embedded images
+name: UNNC preview maintenance
 
 on:
   pull_request:
@@ -6,14 +6,16 @@ on:
       - main
     paths:
       - index.html
+      - unnc-*.html
       - scripts/optimize_embedded_images.py
+      - scripts/authoritative_tone.py
       - .github/workflows/optimize-images.yml
 
 permissions:
   contents: write
 
 jobs:
-  optimize:
+  maintain:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
@@ -27,18 +29,21 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Extract embedded images without changing quality
+      - name: Keep existing homepage images externalized
         run: python scripts/optimize_embedded_images.py
 
-      - name: Commit lightweight homepage only when needed
+      - name: Remove source-attribution wording from visible Korean copy
+        run: python scripts/authoritative_tone.py --fix
+
+      - name: Commit preview tone cleanup
         shell: bash
         run: |
-          if git diff --quiet -- index.html assets/embedded; then
-            echo "No embedded-image extraction changes were needed."
+          git add index.html unnc-*.html assets/embedded
+          if git diff --cached --quiet; then
+            echo "No tone cleanup changes were needed."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html assets/embedded
-          git commit -m "Externalize homepage images without changing design"
+          git commit -m "Use direct authoritative Korean copy"
           git push origin "HEAD:${{ github.head_ref }}"
