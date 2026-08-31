@@ -9,6 +9,7 @@ on:
       - unnc-*.html
       - scripts/optimize_embedded_images.py
       - scripts/authoritative_tone.py
+      - scripts/tone_quickfix.py
       - .github/workflows/optimize-images.yml
 
 permissions:
@@ -32,7 +33,10 @@ jobs:
       - name: Keep existing homepage images externalized
         run: python scripts/optimize_embedded_images.py
 
-      - name: Remove source-attribution wording from visible Korean copy
+      - name: Rewrite source-attribution wording as direct facts
+        run: python scripts/tone_quickfix.py
+
+      - name: Apply and validate authoritative Korean tone
         run: python scripts/authoritative_tone.py --fix
 
       - name: Commit preview tone cleanup
