@@ -11,6 +11,12 @@ FILES = [
     ROOT / "unnc-tuition-scholarships-2027.html",
     ROOT / "unnc-programmes-careers.html",
     ROOT / "unnc-nottingham-degree-uk-campus.html",
+    ROOT / "unnc-application-documents-2027.html",
+    ROOT / "unnc-accommodation-campus-life.html",
+    ROOT / "unnc-exchange-study-abroad.html",
+    ROOT / "unnc-how-study-english-teaching.html",
+    ROOT / "unnc-career-support-further-study.html",
+    ROOT / "unnc-ningbo-china-life.html",
 ]
 
 # Source verification belongs in the compact '자료 출처' section. Student-facing
