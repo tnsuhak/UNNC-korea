@@ -47,5 +47,3 @@ jobs:
           git add index.html assets/embedded
           git commit -m "Externalize homepage images without changing design"
           git push origin "HEAD:${{ github.head_ref }}"
-
-# One-time PR synchronization marker for contextual homepage guide links.
