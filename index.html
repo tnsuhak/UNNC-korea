@@ -261,20 +261,18 @@
   .foot-info .co{color:#cdd7e6}
   .copy{margin-top:16px;font-family:'DM Mono',monospace;font-size:.72rem;color:#6b7d93}
 
+  /* ---------- CONTEXTUAL DETAIL LINKS ---------- */
+  .related-links{margin-top:22px;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+  .related-label{font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.12em;color:#98a2b3;margin-right:2px}
+  .related-link{display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid #d9dee7;border-radius:3px;background:rgba(255,255,255,.72);color:var(--navy);font-size:.78rem;font-weight:700;line-height:1.4;transition:.2s}
+  .related-link:hover{border-color:var(--gold);color:#8b6a1f;transform:translateY(-1px)}
+  .related-link .arr{color:var(--gold)}
+  #campus .related-label{color:#91a1b6}
+  #campus .related-link{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.2);color:#eef3f9}
+  #campus .related-link:hover{border-color:var(--gold);color:var(--gold-lt)}
+  @media(max-width:560px){.related-links{justify-content:flex-start;margin-top:18px}.related-label{width:100%;margin-bottom:1px}.related-link{font-size:.75rem;padding:8px 10px}}
 
-  /* ---------- INTERNAL GUIDES ---------- */
-  #guides{background:#0e1a2e;color:#fff}
-  #guides .sec-title{color:#fff}
-  #guides .sec-sub{color:#c6d0de}
-  .guide-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
-  .guide-card{display:block;background:#fff;color:#24324a;border:1px solid rgba(255,255,255,.12);border-top:3px solid var(--gold);padding:25px 22px;min-height:190px;transition:.25s}
-  .guide-card:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(0,0,0,.22)}
-  .guide-card .gt{font-family:'DM Mono',monospace;color:#9a7626;font-size:.66rem;letter-spacing:.12em}
-  .guide-card h3{color:var(--navy);font-size:1.05rem;line-height:1.4;margin:9px 0}
-  .guide-card p{color:#667085;font-size:.84rem;line-height:1.75}
-  .guide-card .more{display:block;color:#8f6e22;font-weight:700;font-size:.82rem;margin-top:14px}
-  @media(max-width:960px){.guide-grid{grid-template-columns:1fr 1fr}}
-  @media(max-width:560px){.guide-grid{grid-template-columns:1fr}.guide-card{min-height:0}}
+
 
   /* ---------- FLOATING ---------- */
   #floatBtns{position:fixed;bottom:26px;right:20px;z-index:500;display:flex;flex-direction:column;gap:9px;align-items:center}
@@ -589,6 +587,9 @@
       <div class="fc"><div class="fnum">05</div><h3>상하이 2시간</h3><p>중국 닝보 소재. 상하이에서 약 2시간 거리의 국제 항구도시입니다.</p></div>
     </div>
   </div>
+
+    <!-- CONTEXTUAL LINKS: information -->
+    <div class="wrap related-links" aria-label="이 내용과 관련된 상세 가이드"><span class="related-label">관련 글</span><a class="related-link" href="unnc-nottingham-degree-uk-campus.html">노팅엄 학위·4+0·2+2<span class="arr">→</span></a><a class="related-link" href="unnc-how-study-english-teaching.html">영어수업·수업방식<span class="arr">→</span></a></div>
 </section>
 
 <!-- ===== CAMPUS ===== -->
@@ -616,6 +617,9 @@
       </div>
     </div>
   </div>
+
+    <!-- CONTEXTUAL LINKS: campus -->
+    <div class="wrap related-links" aria-label="이 내용과 관련된 상세 가이드"><span class="related-label">관련 글</span><a class="related-link" href="unnc-exchange-study-abroad.html">교환학생·Study Abroad<span class="arr">→</span></a><a class="related-link" href="unnc-ningbo-china-life.html">닝보 유학생활<span class="arr">→</span></a></div>
 </section>
 
 <!-- ===== CAMPUS TOUR ===== -->
@@ -669,30 +673,11 @@
       <div class="mj"><div class="cat">ENGINEERING</div><div class="nm">프로덕트 디자인 &amp; 공학</div><div class="deg">BEng (Hons) (2+2)</div></div>
       <div class="mj"><div class="cat">SCIENCE</div><div class="nm">통계학</div><div class="deg">BSc (Hons) (2+2)</div></div>
     </div>  </div>
+
+    <!-- CONTEXTUAL LINKS: major -->
+    <div class="wrap related-links" aria-label="이 내용과 관련된 상세 가이드"><span class="related-label">관련 글</span><a class="related-link" href="unnc-programmes-careers.html">전공·졸업 후 진로<span class="arr">→</span></a><a class="related-link" href="unnc-career-support-further-study.html">취업·대학원 진학 지원<span class="arr">→</span></a></div>
 </section>
 
-<!-- ===== INTERNAL GUIDES ===== -->
-<section class="sec" id="guides">
-  <div class="wrap">
-    <div class="center">
-      <span class="eyebrow" style="color:var(--gold-lt)">UNNC RELATED GUIDES</span>
-      <h2 class="sec-title">UNNC 관련 글 · 상세 가이드</h2>
-      <p class="sec-sub">메인페이지에서는 핵심만 보고, 입학·비용·학위·기숙사·교환학생·수업방식·진로·닝보 생활은 주제별 상세페이지에서 더 자세히 확인할 수 있습니다.</p>
-    </div>
-    <div class="guide-grid rv">
-      <a class="guide-card" href="unnc-admission-requirements-korea-2027.html"><span class="gt">ADMISSION</span><h3>2027 한국학생 입학조건</h3><p>Year 1·Year 2, 한국 학력, IELTS·PTE·TOEFL과 전공별 조건을 정리했습니다.</p><span class="more">입학조건 자세히 →</span></a>
-      <a class="guide-card" href="unnc-application-documents-2027.html"><span class="gt">APPLICATION</span><h3>지원서류·지원 준비</h3><p>성적표, 졸업증명, 추천서, Personal Statement, 여권과 증명사진을 체크합니다.</p><span class="more">지원 준비 자세히 →</span></a>
-      <a class="guide-card" href="unnc-tuition-scholarships-2027.html"><span class="gt">COST</span><h3>학비·장학금·연간 비용</h3><p>학부 학비 120,000 RMB, 장학금과 원화 환산, 전체 예산을 비교합니다.</p><span class="more">비용 자세히 →</span></a>
-      <a class="guide-card" href="unnc-accommodation-campus-life.html"><span class="gt">ACCOMMODATION</span><h3>기숙사·캠퍼스 생활</h3><p>11동·12B동·20동 비용과 방 구조, 보안·의료·생활편의 시설을 확인합니다.</p><span class="more">기숙사 자세히 →</span></a>
-      <a class="guide-card" href="unnc-nottingham-degree-uk-campus.html"><span class="gt">DEGREE & UK</span><h3>노팅엄 학위·4+0·2+2</h3><p>University of Nottingham degree certificate와 영국 캠퍼스 학업 구조를 설명합니다.</p><span class="more">학위 구조 자세히 →</span></a>
-      <a class="guide-card" href="unnc-exchange-study-abroad.html"><span class="gt">GLOBAL</span><h3>교환학생·Study Abroad</h3><p>Exchange, Study Abroad, Summer School의 기간과 학비 구조 차이를 정리했습니다.</p><span class="more">글로벌 기회 자세히 →</span></a>
-      <a class="guide-card" href="unnc-how-study-english-teaching.html"><span class="gt">STUDY</span><h3>영어수업·수업방식</h3><p>15~20명 세미나, module, 평가, Personal Tutor와 학업지원 구조를 확인합니다.</p><span class="more">수업방식 자세히 →</span></a>
-      <a class="guide-card" href="unnc-programmes-careers.html"><span class="gt">PROGRAMMES</span><h3>전공·졸업 후 진로</h3><p>경영·AI·공학·인문사회 전공과 2025 대학원·취업 결과를 함께 봅니다.</p><span class="more">전공·진로 자세히 →</span></a>
-      <a class="guide-card" href="unnc-career-support-further-study.html"><span class="gt">CAREER SUPPORT</span><h3>취업·대학원 진학 지원</h3><p>인턴십, Career Week, 1:1 상담, 90개+ 워크숍과 대학원 지원 서비스를 정리했습니다.</p><span class="more">커리어 지원 자세히 →</span></a>
-      <a class="guide-card" href="unnc-ningbo-china-life.html"><span class="gt">NINGBO LIFE</span><h3>닝보 유학생활·중국생활</h3><p>상하이 접근성, 교통, 음식, 생활환경과 중국에서 공부하는 의미를 확인합니다.</p><span class="more">닝보 생활 자세히 →</span></a>
-    </div>
-  </div>
-</section>
 
 <!-- ===== CALENDAR (TUITION) ===== -->
 <section class="sec" id="calendar">
@@ -723,6 +708,9 @@
       </div>
     </div>
   </div>
+
+    <!-- CONTEXTUAL LINKS: calendar -->
+    <div class="wrap related-links" aria-label="이 내용과 관련된 상세 가이드"><span class="related-label">관련 글</span><a class="related-link" href="unnc-tuition-scholarships-2027.html">학비·장학금·연간 비용 자세히<span class="arr">→</span></a></div>
 </section>
 
 <!-- ===== ROOMS ===== -->
@@ -788,6 +776,9 @@
       <figure><img src="assets/embedded/26c889a04c3f58ee.webp" alt="UNNC 기숙사 내부 5"><figcaption>20동 욕실</figcaption></figure>
     </div>
   </div>
+
+    <!-- CONTEXTUAL LINKS: rooms -->
+    <div class="wrap related-links" aria-label="이 내용과 관련된 상세 가이드"><span class="related-label">관련 글</span><a class="related-link" href="unnc-accommodation-campus-life.html">기숙사·캠퍼스 생활 자세히<span class="arr">→</span></a></div>
 </section>
 
 <!-- ===== ADMISSION ===== -->
@@ -822,6 +813,9 @@
       </div>
     </div>
   </div>
+
+    <!-- CONTEXTUAL LINKS: admission -->
+    <div class="wrap related-links" aria-label="이 내용과 관련된 상세 가이드"><span class="related-label">관련 글</span><a class="related-link" href="unnc-admission-requirements-korea-2027.html">2027 한국학생 입학조건<span class="arr">→</span></a><a class="related-link" href="unnc-application-documents-2027.html">지원서류·지원 준비<span class="arr">→</span></a></div>
 </section>
 
 <!-- ===== REVIEWS ===== -->
