@@ -1,0 +1,43 @@
+name: One-time remove broken Facebook embed
+
+on:
+  push:
+    branches:
+      - feature/unnc-clubs-student-life-20260904
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/unnc-clubs-student-life-20260904
+          fetch-depth: 0
+      - name: Replace broken Facebook iframe with clean external button
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('unnc-accommodation-campus-life.html')
+          text = path.read_text(encoding='utf-8')
+          pattern = re.compile(r'<section class="section"><h2>기숙사 영상으로 보기</h2>.*?</section>\n(?=<section class="section"><h2>생활 지원과 안전</h2>)', re.S)
+          replacement = '''<section class="section"><h2>기숙사 영상으로 보기</h2><p class="lead">사진과 함께 기숙사 내부와 생활 공간을 Facebook 영상으로도 확인해 보세요.</p><div style="max-width:720px;margin:0 auto;padding:28px 24px;border:1px solid #e4e7ec;border-radius:8px;background:#fff;text-align:center"><p style="margin:0 0 16px;color:#596273">현재 공유 링크는 Facebook 외부 임베드가 제한되어 있어 원본 영상에서 확인할 수 있습니다.</p><a href="https://www.facebook.com/share/v/19G1YXySfH/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border-radius:4px;background:#1877f2;color:#fff;font-weight:700">Facebook에서 기숙사 영상 보기 →</a></div></section>\n'''
+          new_text, count = pattern.subn(replacement, text, count=1)
+          if count != 1:
+              raise SystemExit(f'Expected one Facebook video section, replaced {count}')
+          path.write_text(new_text, encoding='utf-8')
+          PY
+      - name: Commit cleanup and remove one-time workflow
+        shell: bash
+        run: |
+          rm -f .github/workflows/one-time-remove-broken-facebook-embed.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add unnc-accommodation-campus-life.html .github/workflows/one-time-remove-broken-facebook-embed.yml
+          git commit -m "Remove broken Facebook video embed"
+          git push origin HEAD:feature/unnc-clubs-student-life-20260904
