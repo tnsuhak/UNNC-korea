@@ -215,6 +215,10 @@
   .rev p{color:#3a4657;font-size:.96rem;margin:12px 0 18px}
   .rev .who b{color:var(--navy);font-size:.95rem}
   .rev .who span{font-family:'DM Mono',monospace;font-size:.74rem;color:var(--mid);display:block}
+  .review-featured{width:min(1280px,calc(100vw - 32px));margin:36px 0 0 50%;transform:translateX(-50%)}
+  .review-more{text-align:center;margin-top:26px}
+  .review-more a{display:inline-flex;align-items:center;justify-content:center;background:var(--navy);color:#fff;padding:14px 28px;border-radius:3px;font-weight:700;transition:.25s}
+  .review-more a:hover{background:var(--gold);color:var(--navy);transform:translateY(-2px)}
 
   /* ---------- INQUIRY ---------- */
   .inq-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:44px;align-items:start}
@@ -336,6 +340,9 @@
     .adm li{font-size:.96rem;line-height:1.8}
     .adm[style*="grid-column"]{padding:0;background:transparent;border:0;box-shadow:none}
     .adm[style*="grid-column"]>h3{padding:0 0 14px}
+
+    .review-featured{width:calc(100vw - 8px)}
+    .review-more a{width:100%;max-width:360px;min-height:54px}
 
     #floatBtns{right:14px;bottom:18px;gap:8px}
     #floatBtns a{width:50px;height:50px;font-size:.6rem}
@@ -841,32 +848,19 @@
 <section class="sec" id="reviews">
   <div class="wrap">
     <div class="center">
-      <span class="eyebrow">Student Reviews</span>
-      <h2 class="sec-title">재학생후기</h2>
-      <p class="sec-sub">전 세계에서 모인 UNNC 재학생들의 생생한 캠퍼스 라이프.</p>
+      <span class="eyebrow">Korean Student Reviews</span>
+      <h2 class="sec-title">UNNC 한국학생 후기</h2>
+      <p class="sec-sub">학교 소개만으로는 알기 어려운 수업과 캠퍼스 생활을 한국학생의 실제 경험으로 확인해 보세요.</p>
     </div>
-    <div class="rev-grid video-reviews">
-      <div class="video-box rev-video rv" data-video="ybbklFPZG9c">
-        <img src="https://img.youtube.com/vi/ybbklFPZG9c/maxresdefault.jpg" alt="UNNC 재학생후기 영상 1" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/ybbklFPZG9c/hqdefault.jpg';">
+    <div class="review-featured">
+      <div class="video-box rv" data-video="m3ZNeug_5Zg">
+        <img src="https://img.youtube.com/vi/m3ZNeug_5Zg/maxresdefault.jpg" alt="UNNC 한국학생 후기 대표 영상" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/m3ZNeug_5Zg/hqdefault.jpg';">
         <div class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="#14213d"><path d="M8 5v14l11-7z"/></svg></div>
         <iframe allow="autoplay;encrypted-media" allowfullscreen></iframe>
       </div>
-      <div class="video-box rev-video rv" data-video="m3ZNeug_5Zg">
-        <img src="https://img.youtube.com/vi/m3ZNeug_5Zg/maxresdefault.jpg" alt="UNNC 재학생후기 영상 2" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/m3ZNeug_5Zg/hqdefault.jpg';">
-        <div class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="#14213d"><path d="M8 5v14l11-7z"/></svg></div>
-        <iframe allow="autoplay;encrypted-media" allowfullscreen></iframe>
-      </div>
-      <div class="video-box rev-video rv" data-video="1Guldzj5jNo">
-        <img src="https://img.youtube.com/vi/1Guldzj5jNo/maxresdefault.jpg" alt="UNNC 재학생후기 영상 3" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/1Guldzj5jNo/hqdefault.jpg';">
-        <div class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="#14213d"><path d="M8 5v14l11-7z"/></svg></div>
-        <iframe allow="autoplay;encrypted-media" allowfullscreen></iframe>
-      </div>
-      <div class="video-box rev-video rv" data-video="oxCpmd3vVoE">
-        <img src="https://img.youtube.com/vi/oxCpmd3vVoE/maxresdefault.jpg" alt="UNNC 재학생후기 영상 4" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/oxCpmd3vVoE/hqdefault.jpg';">
-        <div class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="#14213d"><path d="M8 5v14l11-7z"/></svg></div>
-        <iframe allow="autoplay;encrypted-media" allowfullscreen></iframe>
-      </div>
-    </div>  </div>
+      <div class="review-more"><a href="unnc-korean-student-reviews.html">한국학생 후기 5편 모두 보기 →</a></div>
+    </div>
+  </div>
 </section>
 
 <!-- ===== FAQ / CONTACT ===== -->
@@ -919,8 +913,8 @@
         <a href="#rooms">숙소</a>
         <a href="unnc-clubs-student-organisations.html">동아리·학생단체</a>
         <a href="unnc-sports-gym-fitness.html">스포츠·GYM</a>
+        <a href="unnc-korean-student-reviews.html">한국학생 후기</a>
         <a href="#admission">입학안내</a>
-        <a href="#reviews">재학생후기</a>
       </div>
       <div class="foot-col">
         <h4>COMMUNITY</h4>
