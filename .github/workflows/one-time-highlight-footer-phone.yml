@@ -1,0 +1,43 @@
+name: One-time highlight UNNC footer phone links
+on:
+  push:
+    paths:
+      - '.github/workflows/one-time-highlight-footer-phone.yml'
+permissions:
+  contents: write
+jobs:
+  highlight-footer-phone:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/unnc-clubs-student-life-20260904
+      - name: Highlight footer phone links on all HTML pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          replacements = {
+              'href="tel:0232881733" style="color:inherit"': 'href="tel:0232881733" style="color:#c9a84c;font-weight:700;text-decoration:underline;text-underline-offset:3px"',
+              'href="tel:01050241733" style="color:inherit"': 'href="tel:01050241733" style="color:#c9a84c;font-weight:700;text-decoration:underline;text-underline-offset:3px"',
+          }
+          changed = []
+          for path in Path('.').glob('*.html'):
+              text = path.read_text(encoding='utf-8')
+              new = text
+              for old, repl in replacements.items():
+                  new = new.replace(old, repl)
+              if new != text:
+                  path.write_text(new, encoding='utf-8')
+                  changed.append(path.name)
+          print('Changed:', ', '.join(changed))
+          if not changed:
+              raise SystemExit('No footer phone links matched')
+          PY
+      - name: Commit update and remove one-time workflow
+        run: |
+          rm .github/workflows/one-time-highlight-footer-phone.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add '*.html' .github/workflows/one-time-highlight-footer-phone.yml
+          git commit -m "Highlight footer phone links in gold"
+          git push origin HEAD:feature/unnc-clubs-student-life-20260904
