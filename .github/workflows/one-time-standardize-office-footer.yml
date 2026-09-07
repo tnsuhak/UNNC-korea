@@ -22,11 +22,16 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
 
           pages = sorted(Path('.').glob('*.html'))
 
-          simple_old = '<footer><div class="wrap">㈜티앤에스월드와이드 · 대표 신윤옥 · 사업자등록번호 220-87-54964<br>서울 강남구 테헤란로 5길 7 KG타워 B1 · 02-3288-1733 · tns@tnsuhak.com</div></footer>'
           simple_new = '''<footer><div class="wrap"><div style="margin-bottom:14px">㈜티앤에스월드와이드 · 대표 신윤옥 · 사업자등록번호 220-87-54964</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px 30px"><div><strong style="display:block;color:#fff;margin-bottom:5px">서울 본사</strong>서울시 강남구 테헤란로 5길 7 KG타워 B1 (우 06134)<br><a href="tel:0232881733" style="color:inherit;text-decoration:none">02-3288-1733</a><br><a href="mailto:tns@tnsuhak.com" style="color:inherit;text-decoration:none">tns@tnsuhak.com</a></div><div><strong style="display:block;color:#fff;margin-bottom:5px">부산 지사</strong>부산광역시 부산진구 중앙대로 694 쥬디스태화 9층 37호 (우 47295)<br><a href="tel:01050241733" style="color:inherit;text-decoration:none">010-5024-1733</a></div></div></div></footer>'''
+
+          simple_pattern = re.compile(
+              r'<footer><div class="wrap">㈜티앤에스월드와이드.*?서울 강남구 테헤란로 5길 7 KG타워 B1.*?tns@tnsuhak\.com</div></footer>',
+              re.S,
+          )
 
           main_old = '<div class="foot-info"><span class="co">㈜티앤에스월드와이드</span> · 대표: 신윤옥 · 사업자등록번호: 220-87-54964<br>서울 강남구 테헤란로 5길 7 KG타워 B1 · Tel. 02-3288-1733 · tns@tnsuhak.com<div class="copy">© 2025 TNS Worldwide Co., Ltd. All Rights Reserved.</div></div>'
           main_new = '''<div class="foot-info"><span class="co">㈜티앤에스월드와이드</span> · 대표: 신윤옥 · 사업자등록번호: 220-87-54964<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px 30px;margin-top:12px"><div><strong style="display:block;color:#cdd7e6;margin-bottom:4px">서울 본사</strong>서울시 강남구 테헤란로 5길 7 KG타워 B1 (우 06134)<br><a href="tel:0232881733" style="color:inherit">Tel. 02-3288-1733</a><br><a href="mailto:tns@tnsuhak.com" style="color:inherit">tns@tnsuhak.com</a></div><div><strong style="display:block;color:#cdd7e6;margin-bottom:4px">부산 지사</strong>부산광역시 부산진구 중앙대로 694 쥬디스태화 9층 37호 (우 47295)<br><a href="tel:01050241733" style="color:inherit">Tel. 010-5024-1733</a></div></div><div class="copy">© 2025 TNS Worldwide Co., Ltd. All Rights Reserved.</div></div>'''
@@ -40,9 +45,9 @@ jobs:
                       raise SystemExit('Main footer pattern not found in index.html')
                   text = text.replace(main_old, main_new, 1)
               else:
-                  if simple_old not in text:
-                      raise SystemExit(f'Simple footer pattern not found in {path.name}')
-                  text = text.replace(simple_old, simple_new, 1)
+                  text, n = simple_pattern.subn(simple_new, text, count=1)
+                  if n != 1:
+                      raise SystemExit(f'Footer pattern not found or ambiguous in {path.name}: {n}')
               if '서울 본사' not in text or '부산 지사' not in text or 'tel:01050241733' not in text:
                   raise SystemExit(f'Footer validation failed: {path.name}')
               if text != original:
