@@ -1,0 +1,67 @@
+name: One-time compact UNNC contact cards
+
+on:
+  push:
+    branches:
+      - feature/unnc-clubs-student-life-20260904
+    paths:
+      - '.github/workflows/one-time-compact-contact-cards.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  compact-contact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/unnc-clubs-student-life-20260904
+      - name: Reduce contact card sizes on all HTML pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          replacements = {
+              'padding:54px 20px 58px': 'padding:44px 20px 48px',
+              'font-size:clamp(25px,3vw,36px)': 'font-size:clamp(23px,2.6vw,32px)',
+              'margin:30px auto 14px': 'margin:24px auto 10px',
+              'gap:14px': 'gap:10px',
+              'min-height:126px': 'min-height:96px',
+              'padding:20px': 'padding:14px 16px',
+              'font-size:21px': 'font-size:18px',
+              'border-radius:18px': 'border-radius:12px',
+              'font-size:28px': 'font-size:23px',
+              'font-size:14px': 'font-size:13px',
+              'min-height:118px': 'min-height:90px',
+              'padding:18px': 'padding:13px 14px',
+              'font-size:18px': 'font-size:16px',
+              'font-size:27px': 'font-size:22px',
+              'font-size:13px': 'font-size:12px',
+          }
+
+          changed = []
+          for p in Path('.').glob('*.html'):
+              text = p.read_text(encoding='utf-8')
+              m = re.search(r'<section class="contact-panel".*?</section>', text, flags=re.S)
+              if not m:
+                  continue
+              block = m.group(0)
+              new = block
+              for old, repl in replacements.items():
+                  new = new.replace(old, repl)
+              if new != block:
+                  text = text[:m.start()] + new + text[m.end():]
+                  p.write_text(text, encoding='utf-8')
+                  changed.append(p.name)
+          print('Updated:', ', '.join(changed))
+          PY
+      - name: Commit update and remove one-time workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f .github/workflows/one-time-compact-contact-cards.yml
+          git add '*.html' .github/workflows/one-time-compact-contact-cards.yml
+          git commit -m "Compact bottom consultation cards" || exit 0
+          git push origin HEAD:feature/unnc-clubs-student-life-20260904
