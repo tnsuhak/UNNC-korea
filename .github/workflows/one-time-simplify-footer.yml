@@ -1,0 +1,67 @@
+name: One-time simplify UNNC footer
+on:
+  push:
+    branches: [feature/unnc-clubs-student-life-20260904]
+    paths: ['.github/workflows/one-time-simplify-footer.yml']
+permissions:
+  contents: write
+jobs:
+  simplify-footer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/unnc-clubs-student-life-20260904
+      - name: Remove redundant footer menus on all HTML pages
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          touched = 0
+          removed_quick = 0
+          removed_community = 0
+
+          for p in Path('.').glob('*.html'):
+              s = p.read_text(encoding='utf-8')
+              original = s
+
+              s, n1 = re.subn(
+                  r'<div class="foot-col"><h4>QUICK MENU</h4>.*?</div>',
+                  '', s, flags=re.S
+              )
+              s, n2 = re.subn(
+                  r'<div class="foot-col"><h4>COMMUNITY</h4>.*?</div>',
+                  '', s, flags=re.S
+              )
+              removed_quick += n1
+              removed_community += n2
+
+              # With only the brand/intro left in foot-top, use a simple single-column block.
+              s = re.sub(
+                  r'\.foot-top\{display:grid;grid-template-columns:[^;]+;gap:[^;]+;',
+                  '.foot-top{display:block;',
+                  s
+              )
+
+              if s != original:
+                  p.write_text(s, encoding='utf-8')
+                  touched += 1
+
+          if touched == 0:
+              raise SystemExit('No HTML files updated; footer pattern not found')
+          if removed_quick == 0 or removed_community == 0:
+              raise SystemExit(f'Footer menu removal incomplete: QUICK={removed_quick}, COMMUNITY={removed_community}')
+
+          print(f'Updated {touched} HTML files; removed QUICK={removed_quick}, COMMUNITY={removed_community}')
+          PY
+      - name: Commit update and remove one-time workflow
+        shell: bash
+        run: |
+          rm -f .github/workflows/one-time-simplify-footer.yml
+          git config user.name "tnsuhak"
+          git config user.email "tnsuhak@gmail.com"
+          git add -A
+          git commit -m "Simplify footer to brand and office contacts"
+          git push origin HEAD:feature/unnc-clubs-student-life-20260904
