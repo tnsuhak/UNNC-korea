@@ -26,10 +26,16 @@ jobs:
 
           pages = sorted(Path('.').glob('*.html'))
 
-          simple_new = '''<footer><div class="wrap"><div style="margin-bottom:14px">㈜티앤에스월드와이드 · 대표 신윤옥 · 사업자등록번호 220-87-54964</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px 30px"><div><strong style="display:block;color:#fff;margin-bottom:5px">서울 본사</strong>서울시 강남구 테헤란로 5길 7 KG타워 B1 (우 06134)<br><a href="tel:0232881733" style="color:inherit;text-decoration:none">02-3288-1733</a><br><a href="mailto:tns@tnsuhak.com" style="color:inherit;text-decoration:none">tns@tnsuhak.com</a></div><div><strong style="display:block;color:#fff;margin-bottom:5px">부산 지사</strong>부산광역시 부산진구 중앙대로 694 쥬디스태화 9층 37호 (우 47295)<br><a href="tel:01050241733" style="color:inherit;text-decoration:none">010-5024-1733</a></div></div></div></footer>'''
+          office_inner = '''<div style="margin-bottom:14px">㈜티앤에스월드와이드 · 대표 신윤옥 · 사업자등록번호 220-87-54964</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px 30px"><div><strong style="display:block;color:#fff;margin-bottom:5px">서울 본사</strong>서울시 강남구 테헤란로 5길 7 KG타워 B1 (우 06134)<br><a href="tel:0232881733" style="color:inherit;text-decoration:none">02-3288-1733</a><br><a href="mailto:tns@tnsuhak.com" style="color:inherit;text-decoration:none">tns@tnsuhak.com</a></div><div><strong style="display:block;color:#fff;margin-bottom:5px">부산 지사</strong>부산광역시 부산진구 중앙대로 694 쥬디스태화 9층 37호 (우 47295)<br><a href="tel:01050241733" style="color:inherit;text-decoration:none">010-5024-1733</a></div></div>'''
+          simple_new = '<footer><div class="wrap">' + office_inner + '</div></footer>'
+          reviews_new = '<footer>' + office_inner + '</footer>'
 
           simple_pattern = re.compile(
               r'<footer><div class="wrap">㈜티앤에스월드와이드.*?서울 강남구 테헤란로 5길 7 KG타워 B1.*?tns@tnsuhak\.com</div></footer>',
+              re.S,
+          )
+          reviews_pattern = re.compile(
+              r'<footer>㈜티앤에스월드와이드.*?서울 강남구 테헤란로 5길 7 KG타워 B1.*?tns@tnsuhak\.com</footer>',
               re.S,
           )
 
@@ -44,6 +50,10 @@ jobs:
                   if main_old not in text:
                       raise SystemExit('Main footer pattern not found in index.html')
                   text = text.replace(main_old, main_new, 1)
+              elif path.name == 'unnc-korean-student-reviews.html':
+                  text, n = reviews_pattern.subn(reviews_new, text, count=1)
+                  if n != 1:
+                      raise SystemExit(f'Reviews footer pattern failed: {n}')
               else:
                   text, n = simple_pattern.subn(simple_new, text, count=1)
                   if n != 1:
@@ -54,9 +64,9 @@ jobs:
                   path.write_text(text, encoding='utf-8')
                   changed.append(path.name)
 
-          print(f'Updated {len(changed)} HTML footers:')
-          for name in changed:
-              print('-', name)
+          if len(changed) != len(pages):
+              raise SystemExit(f'Expected {len(pages)} changed HTML pages, got {len(changed)}')
+          print(f'Updated {len(changed)} HTML footers')
           PY
 
       - name: Commit footer update and remove one-time workflow
