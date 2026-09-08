@@ -1,0 +1,45 @@
+name: One-time correct Ningbo travel routes
+on:
+  push:
+    branches: [feature/unnc-clubs-student-life-20260904]
+    paths: [.github/workflows/one-time-fix-ningbo-routes.yml]
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/unnc-clubs-student-life-20260904
+      - name: Correct travel content
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+          p=Path('unnc-ningbo-china-life.html')
+          s=p.read_text()
+          s=s.replace('인천-닝보 직항, 상하이·항저우 경유, 제주-닝보 직항과 생활환경을 정리했습니다.','김포-상하이 홍차오 직항, 인천-상하이 푸동·항저우 경유, 제주-닝보 직항과 생활환경을 정리했습니다.')
+          s=s.replace('닝보의 도시 규모와 산업, 한국과의 관계, 인천·제주 직항 및 상하이·항저우 경유 방법을 한국학생 관점에서 정리했습니다.','닝보의 도시 규모와 산업, 한국과의 관계, 김포-홍차오 직항과 인천-푸동·항저우 경유, 제주-닝보 직항을 한국학생 관점에서 정리했습니다.')
+          s=s.replace('UNNC가 위치한 닝보의 도시 규모, 항구·산업 환경, 한국과의 역사·경제 관계, 인천·제주 직항과 상하이·항저우 경유 이동을 한국학생 관점에서 정리했습니다.','UNNC가 위치한 닝보의 도시 규모, 항구·산업 환경, 한국과의 역사·경제 관계, 김포-홍차오 직항과 인천-푸동·항저우 경유, 제주-닝보 직항을 한국학생 관점에서 정리했습니다.')
+          s=s.replace('{"@type":"Question","name":"한국에서 닝보까지 직항이 있나요?","acceptedAnswer":{"@type":"Answer","text":"2026년 8월 1일부터 이스타항공의 인천-닝보 직항이 주 2회 재개됐습니다. 운항일과 시간은 시즌별로 바뀔 수 있어 실제 출국일에는 최신 스케줄을 다시 확인해야 합니다."}},','{"@type":"Question","name":"서울에서 닝보로 갈 때 가장 편한 상하이 경유 방법은 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"서울권에서는 김포공항에서 상하이 홍차오공항으로 직항 입국한 뒤, 공항과 연결된 홍차오역에서 닝보행 고속철을 타는 동선이 가장 단순합니다. 현재 김포-홍차오 직항은 여러 항공사가 매일 운항합니다."}},')
+          s=s.replace('<article><h3>사람의 이동도 증가</h3><p>한국은 닝보의 주요 해외 관광객 시장 가운데 하나이며, 2026년에는 인천-닝보 여객 직항도 5년 만에 다시 열렸습니다.</p></article>','<article><h3>한국과 연결되는 교통망</h3><p>서울에서는 김포-상하이 홍차오 직항을 이용한 뒤 홍차오역에서 닝보행 고속철로 이어갈 수 있고, 제주에서는 시즌에 따라 닝보 직항도 이용할 수 있습니다.</p></article>')
+          new_routes='''<section class="section"><h2>한국에서 닝보까지 어떻게 가나요?</h2><p class="lead">서울권에서는 <strong>김포공항에서 상하이 홍차오공항으로 바로 들어간 뒤 홍차오역에서 닝보행 고속철을 타는 방법</strong>이 가장 단순합니다. 인천공항을 이용해야 한다면 상하이 푸동이나 항저우를 거치는 방법을 비교할 수 있습니다.</p><div class="route-grid">
+          <article class="route-card"><span class="route-no">ROUTE 01 · 서울권 추천</span><h3>김포 → 상하이 홍차오 → 닝보</h3><p><strong>김포국제공항(GMP) → 상하이 홍차오공항(SHA) → 홍차오역 → 닝보역</strong></p><p>김포-홍차오는 대한항공·아시아나항공·중국동방항공·상하이항공이 직항을 운항합니다. 홍차오공항은 홍차오 기차역과 같은 교통 허브에 있어, 입국 후 닝보행 고속철로 이어가기 편합니다. 홍차오-닝보 고속철은 열차에 따라 대략 2시간 안팎입니다.</p><div class="route-note">서울권 학생에게 가장 추천하는 상하이 경유 방법. 푸동공항에서 홍차오로 다시 이동할 필요가 없습니다.</div></article>
+          <article class="route-card"><span class="route-no">ROUTE 02 · 인천 출발</span><h3>인천 → 상하이 푸동 → 홍차오 → 닝보</h3><p><strong>인천(ICN) → 상하이 푸동(PVG) → 상하이 홍차오역 → 닝보역</strong></p><p>인천-상하이는 푸동공항행 항공편 선택지가 많습니다. 현재 인천-홍차오 직항은 없으므로 인천에서 출발하면 푸동공항에 도착한 뒤 공항연락선으로 홍차오 쪽으로 이동해 닝보행 고속철을 타는 방식입니다.</p><div class="route-note">인천공항 출발이 편하거나 푸동행 항공권 조건이 좋을 때 유용합니다. 다만 김포-홍차오 직항보다 중국 내 환승이 한 번 더 필요합니다.</div></article>
+          <article class="route-card"><span class="route-no">ROUTE 03 · 짧은 중국 내 이동</span><h3>인천 → 항저우 → 닝보</h3><p><strong>인천(ICN) → 항저우 샤오산(HGH) → 항저우동역 → 닝보역</strong></p><p>인천에서 항저우로 입국한 뒤 샤오산공항에서 지하철 19호선을 타면 항저우동역까지 약 20여 분입니다. 항저우동역에서는 닝보행 고속철이 자주 운행되며 구간 자체는 대략 1시간 안팎입니다.</p><div class="route-note">상하이 푸동 경유보다 중국 내 이동 동선이 짧아 항공편 시간과 가격이 맞으면 편리한 선택입니다.</div></article>
+          <article class="route-card"><span class="route-no">ROUTE 04 · 제주 출발</span><h3>제주 → 닝보 직항</h3><p><strong>제주국제공항(CJU) → 닝보 리서 국제공항(NGB)</strong></p><p>2026년 여름·가을 스케줄에는 춘추항공 9C8626편이 월·화·목·금·토·일 주 6회 운항합니다. 출발시간은 요일별로 다르며 비행시간은 약 1시간 45분~1시간 55분입니다.</p><div class="route-note">시즌 운항이므로 실제 출국 시점의 운항 여부와 시간을 다시 확인합니다.</div></article>
+          </div><div class="notice" style="margin-top:18px"><strong>서울권 학생에게 추천:</strong> 김포-홍차오 직항 시간이 맞으면 가장 편합니다. 홍차오공항 도착 후 같은 홍차오 교통 허브의 기차역에서 닝보행 고속철로 바로 이어갈 수 있기 때문입니다. 인천공항을 이용해야 한다면 항저우 경유와 푸동 경유를 항공권 시간·가격에 따라 비교하면 됩니다.</div></section>'''
+          s,n=re.subn(r'<section class="section"><h2>한국에서 닝보까지 어떻게 가나요\?</h2>.*?</section>\n\n<section class="section"><h2>닝보에서 실제로 생활하면</h2>',new_routes+'\n\n<section class="section"><h2>닝보에서 실제로 생활하면</h2>',s,flags=re.S)
+          assert n==1,n
+          s=s.replace('<article class="card"><h3>한국과의 이동이 생각보다 가깝습니다</h3><p>인천 직항이 다시 생겼고, 제주 직항도 운항 중입니다. 직항이 맞지 않는 날에도 상하이·항저우를 통해 들어갈 수 있어 귀국·방학 이동의 선택지가 여러 개입니다.</p></article>','<article class="card"><h3>한국과의 이동이 생각보다 가깝습니다</h3><p>서울에서는 김포-상하이 홍차오 직항 후 고속철로 닝보까지 연결할 수 있고, 인천에서는 푸동 또는 항저우를 경유할 수 있습니다. 제주-닝보 직항도 시즌에 따라 운항돼 귀국·방학 이동 선택지가 여러 개입니다.</p></article>')
+          s=s.replace('<details><summary>한국에서 닝보까지 직항이 있나요?</summary><p>있습니다. 2026년 8월 1일부터 이스타항공의 인천-닝보 직항이 주 2회 재개됐습니다. 현재 발표 스케줄은 화요일·토요일 왕복입니다. 항공 스케줄은 시즌별로 바뀔 수 있으므로 실제 출국일에는 다시 확인해야 합니다.</p></details>','<details><summary>서울에서 닝보로 갈 때 가장 편한 방법은?</summary><p>김포공항에서 상하이 홍차오공항으로 직항 입국한 뒤, 홍차오역에서 닝보행 고속철을 타는 동선이 가장 단순합니다. 현재 김포-홍차오 직항은 여러 항공사가 매일 운항합니다.</p></details>')
+          p.write_text(s)
+      - name: Commit and remove one-time workflow
+        run: |
+          git config user.name tnsuhak
+          git config user.email tnsuhak@gmail.com
+          git add unnc-ningbo-china-life.html
+          git rm .github/workflows/one-time-fix-ningbo-routes.yml
+          git commit -m "Fix Ningbo travel routes for Korean students"
+          git push origin HEAD:feature/unnc-clubs-student-life-20260904
