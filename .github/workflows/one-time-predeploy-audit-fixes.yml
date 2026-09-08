@@ -1,0 +1,227 @@
+name: One-time UNNC predeploy audit and fixes
+on:
+  push:
+    branches:
+      - feature/unnc-clubs-student-life-20260904
+    paths:
+      - '.github/workflows/one-time-predeploy-audit-fixes.yml'
+permissions:
+  contents: write
+jobs:
+  predeploy-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/unnc-clubs-student-life-20260904
+      - name: Apply predeploy cleanup and run static audit
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          import sys
+          import xml.etree.ElementTree as ET
+          from urllib.parse import urlsplit
+
+          ROOT = Path('.')
+          PROD = 'https://unnc-korea.netlify.app/'
+          PHONE_STYLE = 'color:#c9a84c;font-weight:700;text-decoration:underline;text-underline-offset:3px'
+          html_files = sorted(ROOT.glob('*.html'))
+          expected_names = {
+              'index.html',
+              'unnc-accommodation-campus-life.html',
+              'unnc-admission-requirements-korea-2027.html',
+              'unnc-application-documents-2027.html',
+              'unnc-career-support-further-study.html',
+              'unnc-clubs-student-organisations.html',
+              'unnc-exchange-study-abroad.html',
+              'unnc-how-study-english-teaching.html',
+              'unnc-korean-student-reviews.html',
+              'unnc-ningbo-china-life.html',
+              'unnc-nottingham-degree-uk-campus.html',
+              'unnc-programmes-careers.html',
+              'unnc-sports-gym-fitness.html',
+              'unnc-tuition-scholarships-2027.html',
+          }
+
+          def normalize_footer_phones(text):
+              footer_re = re.compile(r'<footer\b[^>]*>.*?</footer>', re.I | re.S)
+              tel_re = re.compile(r'<a\s+href="(tel:[^"]+)"(?:\s+style="[^"]*")?([^>]*)>', re.I)
+              def fix_footer(m):
+                  block = m.group(0)
+                  def fix_tel(a):
+                      rest = a.group(2)
+                      rest = re.sub(r'\s+style="[^"]*"', '', rest, flags=re.I)
+                      return f'<a href="{a.group(1)}" style="{PHONE_STYLE}"{rest}>'
+                  return tel_re.sub(fix_tel, block)
+              return footer_re.sub(fix_footer, text)
+
+          changed = []
+          for path in html_files:
+              text = path.read_text(encoding='utf-8')
+              new = text
+              new = new.replace('.contact-panel a{min-height:104px!important}', '')
+              new = new.replace('http://pf.kakao.com/_xfXsxjE', 'https://pf.kakao.com/_xfXsxjE')
+              new = new.replace('© 2025 TNS Worldwide', '© 2026 TNS Worldwide')
+              new = normalize_footer_phones(new)
+              if 'name="twitter:card"' not in new:
+                  marker = '<meta property="og:locale" content="ko_KR">'
+                  if marker in new:
+                      new = new.replace(marker, marker + '\n<meta name="twitter:card" content="summary">', 1)
+                  else:
+                      new = new.replace('</head>', '<meta name="twitter:card" content="summary">\n</head>', 1)
+              if path.name == 'unnc-korean-student-reviews.html' and 'assets/guide-nav.js' not in new:
+                  new = new.replace('</body>', '<script src="assets/guide-nav.js" defer></script>\n</body>', 1)
+              if path.name == 'unnc-accommodation-campus-life.html':
+                  new = new.replace('cinema bookstore,', 'cinema, bookstore,')
+              if new != text:
+                  path.write_text(new, encoding='utf-8')
+                  changed.append(path.name)
+
+          nav_path = ROOT / 'assets/guide-nav.js'
+          nav = nav_path.read_text(encoding='utf-8')
+          nav_new = nav.replace('http://pf.kakao.com/_xfXsxjE', 'https://pf.kakao.com/_xfXsxjE')
+          if nav_new != nav:
+              nav_path.write_text(nav_new, encoding='utf-8')
+              changed.append(str(nav_path))
+
+          errors = []
+          warnings = []
+          actual_names = {p.name for p in html_files}
+          if actual_names != expected_names:
+              errors.append(f'HTML file set mismatch. missing={sorted(expected_names-actual_names)} extra={sorted(actual_names-expected_names)}')
+
+          def expected_canonical(name):
+              return PROD if name == 'index.html' else PROD + name
+
+          def target_from_local(path_value, current_name):
+              u = urlsplit(path_value)
+              raw_path = u.path
+              frag = u.fragment
+              if raw_path in ('', '.'):
+                  target = current_name
+              elif raw_path == '/':
+                  target = 'index.html'
+              elif raw_path.startswith('/'):
+                  target = raw_path.lstrip('/')
+              else:
+                  target = raw_path
+              return target, frag
+
+          for path in html_files:
+              text = path.read_text(encoding='utf-8')
+              name = path.name
+              titles = re.findall(r'<title\b[^>]*>.*?</title>', text, re.I | re.S)
+              if len(titles) != 1:
+                  errors.append(f'{name}: title count={len(titles)}')
+              if not re.search(r'<meta\s+name="description"\s+content="[^"]+"', text, re.I):
+                  errors.append(f'{name}: missing meta description')
+              robots = re.search(r'<meta\s+name="robots"\s+content="([^"]+)"', text, re.I)
+              if not robots or 'index' not in robots.group(1).lower() or 'follow' not in robots.group(1).lower():
+                  errors.append(f'{name}: robots meta is not index,follow')
+              canon = re.findall(r'<link\s+rel="canonical"\s+href="([^"]+)"', text, re.I)
+              if len(canon) != 1:
+                  errors.append(f'{name}: canonical count={len(canon)}')
+              elif canon[0] != expected_canonical(name):
+                  errors.append(f'{name}: canonical mismatch {canon[0]}')
+              h1_count = len(re.findall(r'<h1\b', text, re.I))
+              if h1_count != 1:
+                  errors.append(f'{name}: H1 count={h1_count}')
+              if 'http://' in text:
+                  errors.append(f'{name}: insecure http:// remains')
+              if '.contact-panel a{min-height:104px!important}' in text:
+                  errors.append(f'{name}: obsolete mobile 104px contact override remains')
+              if '© 2025 TNS Worldwide' in text:
+                  errors.append(f'{name}: old 2025 copyright remains')
+              if 'name="twitter:card"' not in text:
+                  errors.append(f'{name}: missing twitter card meta')
+              footers = re.findall(r'<footer\b[^>]*>.*?</footer>', text, re.I | re.S)
+              for footer in footers:
+                  for a in re.finditer(r'<a\s+href="tel:[^"]+"([^>]*)>', footer, re.I):
+                      attrs = a.group(1)
+                      if '#c9a84c' not in attrs or 'underline' not in attrs:
+                          errors.append(f'{name}: footer phone is not visibly clickable')
+
+              ids = set(re.findall(r'\bid="([^"]+)"', text, re.I))
+              for attr, value in re.findall(r'\b(href|src)="([^"]+)"', text, re.I):
+                  low = value.lower()
+                  if low.startswith(('https://','http://','mailto:','tel:','data:','javascript:','//')):
+                      continue
+                  target, frag = target_from_local(value, name)
+                  if target:
+                      tpath = ROOT / target
+                      if not tpath.exists():
+                          errors.append(f'{name}: broken local {attr}={value} -> {target}')
+                          continue
+                  if frag:
+                      target_text = text if target == name else ((ROOT / target).read_text(encoding='utf-8') if (ROOT / target).suffix == '.html' and (ROOT / target).exists() else '')
+                      target_ids = set(re.findall(r'\bid="([^"]+)"', target_text, re.I))
+                      if frag not in target_ids:
+                          errors.append(f'{name}: missing anchor {value}')
+
+          sitemap = ROOT / 'sitemap.xml'
+          try:
+              tree = ET.parse(sitemap)
+              ns = {'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
+              locs = {el.text.strip() for el in tree.findall('.//s:loc', ns) if el.text}
+              expected_locs = {expected_canonical(n) for n in expected_names}
+              if locs != expected_locs:
+                  errors.append(f'sitemap URL mismatch. missing={sorted(expected_locs-locs)} extra={sorted(locs-expected_locs)}')
+          except Exception as e:
+              errors.append(f'sitemap parse failed: {e}')
+
+          robots_text = (ROOT / 'robots.txt').read_text(encoding='utf-8')
+          if 'User-agent: *' not in robots_text or 'Allow: /' not in robots_text:
+              errors.append('robots.txt is not allowing crawl')
+          if 'Sitemap: https://unnc-korea.netlify.app/sitemap.xml' not in robots_text:
+              errors.append('robots.txt sitemap URL mismatch')
+
+          nav = nav_path.read_text(encoding='utf-8')
+          if 'http://' in nav:
+              errors.append('assets/guide-nav.js: insecure http:// remains')
+          for href in re.findall(r'href=\\?"(/unnc-[^"#?]+\.html)', nav):
+              if not (ROOT / href.lstrip('/')).exists():
+                  errors.append(f'guide-nav.js: broken page target {href}')
+          index_text = (ROOT / 'index.html').read_text(encoding='utf-8')
+          index_ids = set(re.findall(r'\bid="([^"]+)"', index_text, re.I))
+          for frag in re.findall(r'href=\\?"/#([^"?]+)', nav):
+              if frag not in index_ids:
+                  errors.append(f'guide-nav.js: missing homepage anchor #{frag}')
+          review_text = (ROOT / 'unnc-korean-student-reviews.html').read_text(encoding='utf-8')
+          if '<script src="assets/guide-nav.js" defer></script>' not in review_text:
+              errors.append('review page: common site menu script missing')
+          if 'cinema bookstore' in (ROOT / 'unnc-accommodation-campus-life.html').read_text(encoding='utf-8'):
+              errors.append('accommodation page: cinema/bookstore typo remains')
+
+          for p in html_files:
+              text = p.read_text(encoding='utf-8')
+              if 'property="og:image"' not in text:
+                  warnings.append(f'{p.name}: no og:image (optional)')
+
+          print('Changed files:', ', '.join(changed) if changed else 'none')
+          print(f'Audited {len(html_files)} HTML pages')
+          if warnings:
+              print('Warnings:')
+              for w in warnings:
+                  print(' -', w)
+          if errors:
+              print('AUDIT FAIL')
+              for e in errors:
+                  print(' -', e)
+              sys.exit(1)
+          print('AUDIT PASS: canonical/meta/H1/robots/sitemap/internal links/local assets/common menu/contact footer checks passed')
+          PY
+      - name: Commit cleanup and remove one-time workflow
+        shell: bash
+        run: |
+          rm .github/workflows/one-time-predeploy-audit-fixes.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Pre-deploy SEO and link cleanup"
+          git push origin HEAD:feature/unnc-clubs-student-life-20260904
