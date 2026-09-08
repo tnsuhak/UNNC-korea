@@ -13,7 +13,7 @@
         '<section class="site-menu-group"><h3><a href="/#campus">캠퍼스생활 <small>메인에서 보기 →</small></a></h3><a href="/unnc-sports-gym-fitness.html">스포츠·GYM 시설</a><a href="/unnc-clubs-student-organisations.html">동아리·학생단체</a><a href="/unnc-exchange-study-abroad.html">교환학생·Study Abroad</a></section>' +
         '<section class="site-menu-group"><h3><a href="/#admission">입학안내 <small>메인에서 보기 →</small></a></h3><a href="/unnc-admission-requirements-korea-2027.html">2027 한국학생 입학조건</a><a href="/unnc-application-documents-2027.html">지원서류 안내</a></section>' +
         '<section class="site-menu-group"><h3><a href="/#reviews">재학생후기 <small>메인에서 보기 →</small></a></h3><a href="/unnc-korean-student-reviews.html">UNNC 한국학생 후기 영상 모음</a></section>' +
-        '<section class="site-menu-group"><h3><a href="/#inquiry">입학문의 <small>메인에서 보기 →</small></a></h3><p>입학조건·학비·전공·숙소 상담은 TNS유학에서 안내합니다.</p><div class="site-menu-cta"><a class="kakao" href="http://pf.kakao.com/_xfXsxjE" target="_blank" rel="noopener">카카오톡 상담</a><a class="phone" href="tel:0232881733">전화상담</a></div></section>' +
+        '<section class="site-menu-group"><h3><a href="/#inquiry">입학문의 <small>메인에서 보기 →</small></a></h3><p>입학조건·학비·전공·숙소 상담은 TNS유학에서 안내합니다.</p><div class="site-menu-cta"><a class="kakao" href="https://pf.kakao.com/_xfXsxjE" target="_blank" rel="noopener">카카오톡 상담</a><a class="phone" href="tel:0232881733">전화상담</a></div></section>' +
       '</div>' +
     '</div>';
 
