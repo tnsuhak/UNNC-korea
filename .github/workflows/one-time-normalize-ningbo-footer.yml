@@ -1,0 +1,75 @@
+name: One-time normalize Ningbo page footer
+on:
+  push:
+    branches:
+      - feature/unnc-clubs-student-life-20260904
+    paths:
+      - '.github/workflows/one-time-normalize-ningbo-footer.yml'
+permissions:
+  contents: write
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/unnc-clubs-student-life-20260904
+      - name: Remove visible source box and copy standard subpage consultation block
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          target = Path('unnc-ningbo-china-life.html')
+          reference = Path('unnc-sports-gym-fitness.html')
+          text = target.read_text(encoding='utf-8')
+          ref = reference.read_text(encoding='utf-8')
+
+          # Do not show a user-facing source box on UNNC content pages by default.
+          text = text.replace('.sources a{word-break:break-all}', '')
+          text, n_sources = re.subn(
+              r'\s*<section class="section sources">.*?</section>\s*',
+              '\n',
+              text,
+              count=1,
+              flags=re.S,
+          )
+          if n_sources != 1:
+              raise SystemExit(f'Expected 1 visible source section, removed {n_sources}')
+
+          # Copy the consultation block verbatim from an existing standard UNNC subpage.
+          pat = re.compile(r'<section class="contact-panel" id="contact".*?</section>', re.S)
+          m = pat.search(ref)
+          if not m:
+              raise SystemExit('Reference consultation block not found')
+          standard = m.group(0)
+          text, n_cta = pat.subn(standard, text, count=1)
+          if n_cta != 1:
+              raise SystemExit(f'Expected 1 target consultation block, replaced {n_cta}')
+
+          target.write_text(text, encoding='utf-8')
+
+          Path('SITE_RULES.md').write_text('''# UNNC Korea site-specific operating notes\n\nThese notes are durable site-specific decisions for future edits.\n\n- Verify factual claims with authoritative/official sources, but **do not add a user-visible `자료 출처` / source box or a small source-links section by default**. Add visible source links only when the user explicitly requests them or when they are essential for a specific content type such as news.\n- Keep official-source verification in the editorial/research process rather than adding source clutter to ordinary UNNC guide pages.\n- All UNNC detail pages should reuse the **same standard consultation panel** already used across the site. Do not invent a page-specific consultation CTA design unless explicitly requested.\n- When editing a detail page, preserve the shared consultation panel and footer unless the requested change specifically concerns them.\n''', encoding='utf-8')
+          PY
+      - name: Verify result
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          t = Path('unnc-ningbo-china-life.html').read_text(encoding='utf-8')
+          r = Path('unnc-sports-gym-fitness.html').read_text(encoding='utf-8')
+          import re
+          assert '자료 출처' not in t
+          assert 'section sources' not in t
+          pat = re.compile(r'<section class="contact-panel" id="contact".*?</section>', re.S)
+          assert pat.search(t).group(0) == pat.search(r).group(0)
+          assert Path('SITE_RULES.md').exists()
+          print('Ningbo source block removed; consultation block matches standard subpage exactly.')
+          PY
+      - name: Commit changes and remove one-time workflow
+        run: |
+          rm .github/workflows/one-time-normalize-ningbo-footer.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add unnc-ningbo-china-life.html SITE_RULES.md .github/workflows/one-time-normalize-ningbo-footer.yml
+          git commit -m "Normalize Ningbo guide footer and persist UNNC page rules"
+          git push origin HEAD:feature/unnc-clubs-student-life-20260904
