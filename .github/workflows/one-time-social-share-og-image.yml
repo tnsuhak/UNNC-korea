@@ -38,25 +38,26 @@ jobs:
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
           old = '<meta property="og:locale" content="ko_KR">\n<meta name="twitter:card" content="summary">'
-          new = '''<meta property="og:locale" content="ko_KR">
-<meta property="og:image" content="https://unnc-korea.netlify.app/assets/social/unnc-korea-share-20260909.jpg">
-<meta property="og:image:secure_url" content="https://unnc-korea.netlify.app/assets/social/unnc-korea-share-20260909.jpg">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="University of Nottingham Ningbo China 캠퍼스 전경">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://unnc-korea.netlify.app/assets/social/unnc-korea-share-20260909.jpg">
-<meta name="twitter:image:alt" content="University of Nottingham Ningbo China 캠퍼스 전경">'''
+          new = '\n'.join([
+              '<meta property="og:locale" content="ko_KR">',
+              '<meta property="og:image" content="https://unnc-korea.netlify.app/assets/social/unnc-korea-share-20260909.jpg">',
+              '<meta property="og:image:secure_url" content="https://unnc-korea.netlify.app/assets/social/unnc-korea-share-20260909.jpg">',
+              '<meta property="og:image:type" content="image/jpeg">',
+              '<meta property="og:image:width" content="1200">',
+              '<meta property="og:image:height" content="630">',
+              '<meta property="og:image:alt" content="University of Nottingham Ningbo China 캠퍼스 전경">',
+              '<meta name="twitter:card" content="summary_large_image">',
+              '<meta name="twitter:image" content="https://unnc-korea.netlify.app/assets/social/unnc-korea-share-20260909.jpg">',
+              '<meta name="twitter:image:alt" content="University of Nottingham Ningbo China 캠퍼스 전경">',
+          ])
           if old not in s:
               raise SystemExit('Expected OG/Twitter metadata block not found')
           s = s.replace(old, new, 1)
           p.write_text(s, encoding='utf-8')
 
-          # Basic verification
           assert s.count('property="og:image"') == 1
           assert 'summary_large_image' in s
-          assert out.exists() and out.stat().st_size > 10_000
+          assert out.exists() and out.stat().st_size > 10000
           PY
 
       - name: Commit update and remove one-time workflow
