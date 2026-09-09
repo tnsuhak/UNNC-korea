@@ -1,4 +1,16 @@
 (function(){
+  function ensureFavicon(){
+    var existing=document.querySelector('link[rel~="icon"][href="/favicon.svg"]');
+    if(existing) return;
+    document.querySelectorAll('link[rel~="icon"]').forEach(function(el){el.remove();});
+    var link=document.createElement('link');
+    link.rel='icon';
+    link.href='/favicon.svg';
+    link.type='image/svg+xml';
+    document.head.appendChild(link);
+  }
+  ensureFavicon();
+
   var MENU_HTML = '' +
     '<div class="site-menu-inner">' +
       '<div class="site-menu-head">' +
