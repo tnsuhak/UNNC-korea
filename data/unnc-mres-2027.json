@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "generated_for": "UNNC Korea",
+  "verified_at": "2026-09-22",
+  "scope": {
+    "degree_type": "Master of Research (MRes)",
+    "public_scope": "Full-time MRes",
+    "programme_count": 9,
+    "faculty": "Faculty of Science and Engineering",
+    "duration_months": 12,
+    "start_dates": [
+      "February",
+      "September"
+    ],
+    "note": "All nine current MRes programmes are listed by UNNC as full-time research degrees. Sustainable Energy and Building Technologies also has a part-time mode, but this Korean international-student guide focuses on full-time study."
+  },
+  "global_requirements": {
+    "academic": "Normally UK honours bachelor degree at 2:1 or international equivalent in a relevant subject; programme-specific subject requirements apply.",
+    "south_korea_gpa_status": "no_mres_specific_south_korea_table_found_do_not_reuse_pgt_table",
+    "supervisor_contact_required_before_application": true,
+    "research_proposal": {
+      "normally_required": true,
+      "word_range": [
+        1000,
+        3000
+      ],
+      "note": "Proposal is assessed for content and format. Applicants are recommended to discuss it with a potential supervisor before submission."
+    },
+    "english": {
+      "IELTS": "6.0 overall, no less than 5.5 in each element",
+      "note": "Current live course pages for the nine FoSE MRes programmes use IELTS 6.0 / 5.5. Programme-specific pages remain the controlling source."
+    },
+    "one_pgr_application_per_entry": true,
+    "application_fee_rmb": 0
+  },
+  "intake_2027": {
+    "february": {
+      "status": "confirmed",
+      "application_deadline": "2026-10-31",
+      "registration_date": "2027-02-15",
+      "final_documents_normally_due": "2026-12-15"
+    },
+    "september": {
+      "status": "pending",
+      "note": "September 2027 self-funded deadline has not yet been published. The Graduate School advises applying at least three months before the desired registration date."
+    }
+  },
+  "tuition": {
+    "international_rmb_per_year_reference": 130000,
+    "reference_academic_year": "2025/26",
+    "academic_year_2027_status": "pending",
+    "note": "Graduate School states fees are subject to change."
+  },
+  "scholarships_2027": {
+    "mres_specific_confirmed": false,
+    "note": "The current PGR fees and scholarships page lists PhD scholarships but does not confirm a 2027 MRes-specific scholarship. Do not apply Postgraduate Taught global scholarship rules to MRes without a current official MRes source."
+  },
+  "common_structure": {
+    "generic_research_training": true,
+    "research_training": true,
+    "scientific_research_paper_writing": true,
+    "professional_development": true,
+    "thesis": true,
+    "thesis_examined_by_internal_and_external_examiners": true,
+    "viva_may_be_required": true
+  },
+  "sources": {
+    "programme_index": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-research/programmes/index.aspx",
+    "pgr_entry_requirements": "https://www.nottingham.edu.cn/en/graduateschool/prospective-students/entry-requirements.aspx",
+    "before_you_apply": "https://www.nottingham.edu.cn/en/graduateschool/how-to-apply/before-you-apply.aspx",
+    "applying": "https://www.nottingham.edu.cn/en/graduateschool/how-to-apply/applying.aspx",
+    "pgr_fees": "https://www.nottingham.edu.cn/en/graduateschool/prospective-students/fees-and-scholarships.aspx",
+    "pgr_faq": "https://www.nottingham.edu.cn/en/graduateschool/prospective-students/faqs-of-pgr-applications.aspx"
+  },
+  "programmes": [
+    {
+      "slug": "chemical-engineering-technology-mres",
+      "name": "Chemical Engineering and Technology",
+      "degree": "MRes",
+      "faculty_unit": "Chemical and Environmental Engineering",
+      "duration_months": 12,
+      "start_dates": [
+        "February",
+        "September"
+      ],
+      "study_mode": "Full time",
+      "english_profile": "IELTS 6.0 / each 5.5",
+      "background_summary": "Engineering or Science background at UK 2:1 equivalent or above; relevant subject fit is assessed.",
+      "research_theme_summary": "Chemical engineering research, advanced process and technology development.",
+      "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-research/Programmes/Prospectus.aspx?id=1e2ce2bc-3b34-4e5e-a01e-ef007ef42288&language=en-GB"
+    },
+    {
+      "slug": "electrical-engineering-mres",
+      "name": "Electrical Engineering",
+      "degree": "MRes",
+      "faculty_unit": "Electrical and Electronic Engineering",
+      "duration_months": 12,
+      "start_dates": [
+        "February",
+        "September"
+      ],
+      "study_mode": "Full time",
+      "english_profile": "IELTS 6.0 / each 5.5",
+      "background_summary": "Minimum UK 2:1 equivalent; relevant engineering background and research fit are important.",
+      "research_theme_summary": "Smart grid, electric drives, power electronics, renewable energy, storage, control, EVs and AI in electrical engineering.",
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-research/programmes/prospectus.aspx?id=cb9ed1b7-3a5a-4fb0-afea-3366c08572d0&language=en-GB"
+    },
+    {
+      "slug": "electronic-engineering-mres",
+      "name": "Electronic Engineering",
+      "degree": "MRes",
+      "faculty_unit": "Electrical and Electronic Engineering",
+      "duration_months": 12,
+      "start_dates": [
+        "February",
+        "September"
+      ],
+      "study_mode": "Full time",
+      "english_profile": "IELTS 6.0 / each 5.5",
+      "background_summary": "Minimum UK 2:1 equivalent; relevant engineering background and research fit are important.",
+      "research_theme_summary": "Robotics, automation, signal processing, VLSI, telecommunications, sensing and related electronic systems research.",
+      "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-research/Programmes/Prospectus.aspx?id=88027d51-8ff0-4670-a2de-592ef722e7c6&language=en-GB"
+    },
+    {
+      "slug": "environmental-science-engineering-mres",
+      "name": "Environmental Science and Engineering",
+      "degree": "MRes",
+      "faculty_unit": "Geographical Sciences / Chemical and Environmental Engineering",
+      "duration_months": 12,
+      "start_dates": [
+        "February",
+        "September"
+      ],
+      "study_mode": "Full time",
+      "english_profile": "IELTS 6.0 / each 5.5",
+      "background_summary": "Bachelor of Engineering or Science at UK 2:1 equivalent or above. Relevant disciplines include Environmental Science, Geographical Sciences, Chemical Engineering and Environmental Engineering.",
+      "research_theme_summary": "Experimental and modelling research in environmental science, environmental management and engineering systems.",
+      "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-research/Programmes/Prospectus.aspx?id=8e8fc2ea-79ad-438b-b948-1d9899f3248e&language=en-GB"
+    },
+    {
+      "slug": "innovative-product-design-manufacture-mres",
+      "name": "Innovative Product Design and Manufacture",
+      "degree": "MRes",
+      "faculty_unit": "Mechanical, Materials and Manufacturing Engineering",
+      "duration_months": 12,
+      "start_dates": [
+        "February",
+        "September"
+      ],
+      "study_mode": "Full time",
+      "english_profile": "IELTS 6.0 / each 5.5",
+      "background_summary": "Bachelor of Engineering or Science at UK 2:1 equivalent or above. Relevant disciplines include Product Design and Manufacture, Manufacturing Engineering, Human Factors and Human-Computer Interaction.",
+      "research_theme_summary": "Multidisciplinary design research and innovative product/manufacturing solutions.",
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-research/programmes/prospectus.aspx?id=1f5ac950-a0e4-44d3-8780-3f6e9ef20053&language=en-GB"
+    },
+    {
+      "slug": "materials-science-engineering-mres",
+      "name": "Materials Science and Engineering",
+      "degree": "MRes",
+      "faculty_unit": "Mechanical, Materials and Manufacturing Engineering",
+      "duration_months": 12,
+      "start_dates": [
+        "February",
+        "September"
+      ],
+      "study_mode": "Full time",
+      "english_profile": "IELTS 6.0 / each 5.5",
+      "background_summary": "Engineering or Science background at UK 2:1 equivalent or above; relevant materials/manufacturing subject fit is assessed.",
+      "research_theme_summary": "Advanced materials, manufacturing, structures and related materials engineering research.",
+      "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-research/Programmes/Prospectus.aspx?id=3e35967c-158d-4724-99c7-0ab3fa380a96&language=en-GB"
+    },
+    {
+      "slug": "mechanical-engineering-mres",
+      "name": "Mechanical Engineering",
+      "degree": "MRes",
+      "faculty_unit": "Mechanical, Materials and Manufacturing Engineering",
+      "duration_months": 12,
+      "start_dates": [
+        "February",
+        "September"
+      ],
+      "study_mode": "Full time",
+      "english_profile": "IELTS 6.0 / each 5.5",
+      "background_summary": "Bachelor of Engineering or Science at UK 2:1 equivalent or above. Relevant disciplines include Mechanical, Manufacturing, Materials, Aeronautical and Chemical Engineering.",
+      "research_theme_summary": "Mechanical, materials and manufacturing engineering research with advanced technical and professional research training.",
+      "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-research/Programmes/Prospectus.aspx?id=35b6a54b-acc9-4123-add7-34a902932e3b&language=en-GB"
+    },
+    {
+      "slug": "smart-construction-mres",
+      "name": "Smart Construction",
+      "degree": "MRes",
+      "faculty_unit": "Civil Engineering",
+      "duration_months": 12,
+      "start_dates": [
+        "February",
+        "September"
+      ],
+      "study_mode": "Full time",
+      "english_profile": "IELTS 6.0 / each 5.5",
+      "background_summary": "Minimum UK 2:1 equivalent; relevant civil engineering/construction research fit is important.",
+      "research_theme_summary": "Smart construction, GIS/information modelling, advanced surveying, structures, transport, geotechnics, construction management and data analysis.",
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-research/programmes/prospectus.aspx?id=2ac49901-fa9e-47a4-9945-2c394f17f540&language=en-GB"
+    },
+    {
+      "slug": "sustainable-energy-building-technologies-mres",
+      "name": "Sustainable Energy and Building Technologies",
+      "degree": "MRes",
+      "faculty_unit": "Chemical and Environmental Engineering / Architecture and Built Environment",
+      "duration_months": 12,
+      "start_dates": [
+        "February",
+        "September"
+      ],
+      "study_mode": "Full time",
+      "part_time_available": true,
+      "english_profile": "IELTS 6.0 / each 5.5",
+      "background_summary": "Bachelor of Engineering or Science at UK 2:1 equivalent or above. Relevant engineering/science background is required.",
+      "research_theme_summary": "Energy, architecture, environmental systems and sustainable building technologies research.",
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-research/programmes/prospectus.aspx?id=908beb52-ab98-45e5-b03a-606d1ac19058&language=en-GB"
+    }
+  ]
+}
