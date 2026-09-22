@@ -420,8 +420,8 @@
       "category_ko": "마케팅",
       "duration_months": 12,
       "duration_official": "12 months",
-      "start_date_official": "September each year",
-      "intake_2027_status": "confirmed_recurring_start_date",
+      "start_date_official": "September 2025",
+      "intake_2027_status": "pending_stale_start_date_text",
       "english_profile": "standard_6_5",
       "academic_requirement": "UK 2:1 or international equivalent",
       "background_requirement": "Related subject such as management, business studies, marketing, economics, accounting, finance or communications.",
@@ -899,8 +899,7 @@
       "academic_requirement": "UK 2:1 or international equivalent",
       "background_requirement": "Appropriate subject; candidates from a wide range of science, technology and creative design fields.",
       "additional_requirements": [
-        "CV",
-        "Portfolio demonstrating relevant design- or technology-related projects, practical experience and skills"
+        "CV"
       ],
       "tuition": {
         "currency": "RMB",
@@ -912,7 +911,8 @@
       "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=132c1b2a-fa12-4138-bb81-5f2f61b10708&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "computing_engineering_design",
-      "background_filter": "related_background"
+      "background_filter": "related_background",
+      "current_official_entry_note": "Current official course page requires a CV; no portfolio requirement was found on the live page as of 2026-09-22."
     },
     {
       "slug": "intelligent-infrastructure-management-msc",
