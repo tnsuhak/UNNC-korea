@@ -138,7 +138,14 @@
       "Passport main pages",
       "2-inch colour bareheaded photo with white background"
     ],
-    "source": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/how-to-apply.aspx"
+    "source": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/how-to-apply.aspx",
+    "current_2026_reference": {
+      "general_deadline": "2026-06-30",
+      "main_cycle_recommended_by": "2026-06-07 23:59 Beijing Time",
+      "condition_documents_normally_due": "2026-07-15",
+      "status": "reference_only_not_2027"
+    },
+    "processing_time_current": "approximately 4 to 6 weeks after completed application and supporting documents"
   },
   "sources": {
     "course_index": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/index.aspx",
