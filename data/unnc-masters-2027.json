@@ -228,7 +228,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-taught/Courses/Prospectus.aspx?id=b9d2c2cf-c783-468a-a31c-9f72e65cdfa4&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "finance_economics",
-      "background_filter": "related_background"
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/finance-investment-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "finance-and-investment-professional-accounting-msc",
@@ -314,7 +318,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=20aff045-bf56-40b2-a45b-311bac5034c9&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "business_management",
-      "background_filter": "all_except_business_management"
+      "background_filter": "all_except_business_management",
+      "detail_path": "/masters/programmes/international-business-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "international-business-supply-chain-management-msc",
@@ -397,7 +405,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-taught/Courses/Prospectus.aspx?id=56d59fe3-de2d-4c11-97b7-3ac9e709567c",
       "study_mode": "Full time",
       "filter_group": "business_management",
-      "background_filter": "related_background"
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/business-analytics-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "international-management-marketing-msc",
@@ -507,7 +519,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=f94e9b97-2f3f-489f-ae03-c72ebf6a484b&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "psychology",
-      "background_filter": "all_disciplines"
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/psychology-applied-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "applied-linguistics-ma",
@@ -628,7 +644,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-taught/Courses/Prospectus.aspx?id=aba3bab7-9a44-4915-bb04-53cf3ce06deb&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "education_language",
-      "background_filter": "all_disciplines"
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/tesol-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "international-communications-studies-ma",
@@ -802,7 +822,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-taught/Courses/Prospectus.aspx?id=4078931a-fd18-4c2a-810a-0642d82c861d&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "computing_engineering_design",
-      "background_filter": "related_background"
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/computer-science-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "urbanism-sustainable-environments-msc",
