@@ -202,7 +202,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/course/prospectus.aspx?id=04defbde-710c-44f3-87f6-99ed18e3f681&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "business_management",
-      "background_filter": "all_disciplines"
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/entrepreneurship-innovation-management-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "finance-and-investment-msc",
@@ -263,7 +267,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=9c705f0a-9d6d-41d3-9484-85b4f6453302",
       "study_mode": "Full time",
       "filter_group": "finance_economics",
-      "background_filter": "related_background"
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/finance-investment-professional-accounting-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "financial-technology-msc",
@@ -482,7 +490,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=0fa5b059-7366-49fc-bdba-8448bcbca23c&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "finance_economics",
-      "background_filter": "related_background"
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/finance-investment-economics-money-finance-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "economics-msc",
@@ -563,7 +575,7 @@
       "additional_requirements": [
         "CV",
         "Academic writing sample around 1,000 words",
-        "Eligible applicants may be invited to interview; the official course-specific page describes interview screening"
+        "Interview with course admissions tutor required"
       ],
       "tuition": {
         "currency": "RMB",
@@ -575,7 +587,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/Course/Prospectus.aspx?id=1de2de90-8a72-45ad-b205-d87869adf2ae&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "education_language",
-      "background_filter": "all_disciplines"
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/applied-linguistics-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "interpreting-translation-mandarin-english-ma",
@@ -605,7 +621,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=071f655d-a480-4039-9f80-5608de53e372&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "education_language",
-      "background_filter": "language_specific"
+      "background_filter": "language_specific",
+      "detail_path": "/masters/programmes/interpreting-translation-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "international-higher-education-ma",
@@ -622,7 +642,7 @@
       "academic_requirement": "UK 2:1 or international equivalent",
       "background_requirement": "Open to graduates of any subject.",
       "additional_requirements": [
-        "Eligible applicants may be invited to interview"
+        "Interview with course admissions tutor required"
       ],
       "tuition": {
         "currency": "RMB",
@@ -634,7 +654,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-taught/Courses/Prospectus.aspx?id=a17962f6-95e9-4c44-bcaa-829f644bdda1&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "education_language",
-      "background_filter": "all_disciplines"
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/international-higher-education-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "tesol-ma",
@@ -699,7 +723,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/course/prospectus.aspx?id=32eced62-f3f5-4a20-afea-e8a242382eba&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "international_media_policy",
-      "background_filter": "all_disciplines"
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/international-communications-studies-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "digital-screen-production-ma",
@@ -732,7 +760,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-taught/Courses/Prospectus.aspx?id=4b50d3f2-ba36-40ac-889e-6f383d969b88&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "international_media_policy",
-      "background_filter": "all_disciplines"
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/digital-screen-production-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "international-relations-world-history-ma",
@@ -759,7 +791,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=8a50893a-4392-4c57-bf58-874f82d0b472&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "international_media_policy",
-      "background_filter": "all_disciplines"
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/international-relations-world-history-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "international-relations-international-business-ma",
@@ -786,7 +822,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=03442bfb-44af-4c1c-b46b-8cdcef3b952b&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "international_media_policy",
-      "background_filter": "all_disciplines"
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/international-relations-international-business-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "international-public-policy-ma",
@@ -878,7 +918,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=899f5ca4-b300-44f6-9ff9-9a47fb345607&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "computing_engineering_design",
-      "background_filter": "related_background"
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/urbanism-sustainable-environments-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "electronic-communications-computer-engineering-msc",
@@ -974,7 +1018,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=18e9eea9-c910-4d37-a08f-1bc81daa2daa&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "computing_engineering_design",
-      "background_filter": "related_background"
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/intelligent-infrastructure-management-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     }
   ]
 }
