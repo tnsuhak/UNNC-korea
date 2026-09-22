@@ -291,7 +291,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=7ceb0ca6-ecce-42bb-9e3b-5cf54a7d5d3f&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "finance_economics",
-      "background_filter": "related_background"
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/financial-technology-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "international-business-msc",
@@ -351,7 +355,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/course/prospectus.aspx?id=d11461d0-0074-48e8-875a-e22bfdf63982&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "business_management",
-      "background_filter": "related_background"
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/supply-chain-management-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "international-management-msc",
@@ -378,7 +386,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=79708a83-5712-44b2-a7ab-f78c84681178",
       "study_mode": "Full time",
       "filter_group": "business_management",
-      "background_filter": "related_background"
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/international-management-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "international-management-business-analytics-msc",
@@ -438,7 +450,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/course/prospectus.aspx?id=fcfceaed-897c-4151-9fe5-351112667b5d&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "business_management",
-      "background_filter": "related_background"
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/international-management-marketing-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "finance-and-investment-economics-money-and-finance-msc",
@@ -492,7 +508,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=78c1a502-6857-419e-ab51-44b6e5bb3ef4&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "finance_economics",
-      "background_filter": "related_background"
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/economics-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "psychology-applied-msc",
@@ -792,7 +812,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=14f6c929-3a8d-4303-92a7-7545cb893c7a&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "international_media_policy",
-      "background_filter": "all_disciplines"
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/international-public-policy-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "computer-science-msc",
@@ -882,7 +906,11 @@
       "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-taught/Courses/Prospectus.aspx?id=6f0bd050-3cb4-456a-8055-01181ea5ef50&language=en-GB",
       "study_mode": "Full time",
       "filter_group": "computing_engineering_design",
-      "background_filter": "related_background"
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/electronic-communications-computer-engineering-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "innovative-design-msc",
@@ -912,7 +940,11 @@
       "study_mode": "Full time",
       "filter_group": "computing_engineering_design",
       "background_filter": "related_background",
-      "current_official_entry_note": "Current official course page requires a CV; no portfolio requirement was found on the live page as of 2026-09-22."
+      "current_official_entry_note": "Current official course page requires a CV; no portfolio requirement was found on the live page as of 2026-09-22.",
+      "detail_path": "/masters/programmes/innovative-design-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
     },
     {
       "slug": "intelligent-infrastructure-management-msc",
