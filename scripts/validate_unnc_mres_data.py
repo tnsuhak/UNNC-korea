@@ -20,8 +20,10 @@ assert d["intake_2027"]["february"]["application_deadline"] == "2026-10-31"
 assert d["intake_2027"]["september"]["status"] == "pending"
 assert d["tuition"]["academic_year_2027_status"] == "pending"
 assert d["scholarships_2027"]["mres_specific_confirmed"] is False
+assert "Postgraduate Taught" in d["scholarships_2027"]["note"]
 detail_paths = [c.get("detail_path") for c in courses if c.get("detail_path")]
 assert len(detail_paths) == 9
 assert len(set(detail_paths)) == 9
+assert all((DATA.parents[1] / p.lstrip("/")).is_file() for p in detail_paths), "Missing MRes detail HTML"
 assert all(c.get("detail_status") == "published_in_preview" for c in courses)
 print("UNNC MRes data validation passed")

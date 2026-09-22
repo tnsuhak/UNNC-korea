@@ -8,8 +8,7 @@
     "full_time_taught_count": 26,
     "duration_summary": {
       "months_12": 24,
-      "months_21": 1,
-      "months_24": 1
+      "months_21": 2
     },
     "excluded": [
       {
@@ -246,10 +245,10 @@
       "faculty_group": "Nottingham University Business School China",
       "category": "finance_economics",
       "category_ko": "금융·회계",
-      "duration_months": 24,
-      "duration_official": "24 months",
-      "start_date_official": "September 2025",
-      "intake_2027_status": "pending_stale_start_date_text",
+      "duration_months": 21,
+      "duration_official": "21 months",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
       "english_profile": "standard_6_5",
       "academic_requirement": "UK 2:1 or international equivalent",
       "background_requirement": "Basic accounting knowledge demonstrated through Financial Accounting and Financial Reporting study or recognised professional accounting qualification modules/examinations.",
@@ -441,8 +440,8 @@
       "category_ko": "마케팅",
       "duration_months": 12,
       "duration_official": "12 months",
-      "start_date_official": "September 2025",
-      "intake_2027_status": "pending_stale_start_date_text",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
       "english_profile": "standard_6_5",
       "academic_requirement": "UK 2:1 or international equivalent",
       "background_requirement": "Related subject such as management, business studies, marketing, economics, accounting, finance or communications.",
@@ -939,7 +938,8 @@
       "academic_requirement": "UK 2:1 or international equivalent",
       "background_requirement": "Appropriate subject; high 2:2 in Electronic Engineering, Computer Engineering, Communication Engineering or equivalent may be reviewed case by case.",
       "additional_requirements": [
-        "CV"
+        "CV",
+        "Portfolio demonstrating relevant design- or technology-related projects, practical experience and skills"
       ],
       "tuition": {
         "currency": "RMB",
@@ -972,7 +972,8 @@
       "academic_requirement": "UK 2:1 or international equivalent",
       "background_requirement": "Appropriate subject; candidates from a wide range of science, technology and creative design fields.",
       "additional_requirements": [
-        "CV"
+        "CV",
+        "Portfolio demonstrating relevant design- or technology-related projects, practical experience and skills"
       ],
       "tuition": {
         "currency": "RMB",
@@ -985,7 +986,7 @@
       "study_mode": "Full time",
       "filter_group": "computing_engineering_design",
       "background_filter": "related_background",
-      "current_official_entry_note": "Current official course page requires a CV; no portfolio requirement was found on the live page as of 2026-09-22.",
+      "current_official_entry_note": "Current official course page requires both a CV and a portfolio demonstrating relevant design- or technology-related work.",
       "detail_path": "/masters/programmes/innovative-design-msc.html",
       "detail_status": "published_in_preview",
       "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
