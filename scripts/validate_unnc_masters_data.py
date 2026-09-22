@@ -14,10 +14,10 @@ assert not any("Business Administration" == c["name"] for c in courses), "Part-t
 durations = {}
 for c in courses:
     durations[c["duration_months"]] = durations.get(c["duration_months"], 0) + 1
-assert durations == {12: 24, 21: 2}, f"Unexpected duration distribution: {durations}"
+assert durations == {12: 24, 21: 1, 24: 1}, f"Unexpected duration distribution: {durations}"
 
-long_courses = {c["name"] for c in courses if c["duration_months"] == 21}
-assert long_courses == {"Computer Science", "Finance and Investment (Professional Accounting)"}
+assert {c["name"] for c in courses if c["duration_months"] == 21} == {"Computer Science"}
+assert {c["name"] for c in courses if c["duration_months"] == 24} == {"Finance and Investment (Professional Accounting)"}
 
 lower = {c["name"] for c in courses if c["english_profile"] == "lower_6_0"}
 assert lower == {
