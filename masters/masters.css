@@ -63,8 +63,8 @@ a{color:inherit}
  .value-grid{grid-template-columns:1fr 1fr}.field-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:700px){
- .contact-panel>div>div[style*="grid-template-columns:repeat(2"]{grid-template-columns:1fr!important}
- .contact-panel>div>div[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}
+ .contact-panel>div>div[style*="grid-template-columns:repeat(2"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .contact-panel>div>div[style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}.contact-panel>div>div[style*="grid-template-columns:repeat(3"]>a:last-child{grid-column:1/-1}
 
  html{scroll-padding-top:70px}.topbar{min-height:32px;padding:6px 18px;font-size:9px}.topbar span:last-child{display:none}.nav{height:60px;padding:0 18px}.brand-mark{width:35px;height:35px}.brand-copy strong{font-size:13.5px}.brand-copy span{font-size:9px}.mobile-nav{top:92px}
  .hero-inner{width:min(100% - 34px,1080px);padding:48px 0 70px}.hero h1{font-size:clamp(39px,12vw,54px)}.hero-lead{font-size:13.5px}.hero-actions{display:grid;grid-template-columns:1fr 1fr}.btn{font-size:12px;padding:11px 9px}.hero-stat{padding:19px 13px}.hero-stat b{font-size:25px}.hero-stat span{font-size:10px}
