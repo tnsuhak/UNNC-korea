@@ -8,7 +8,8 @@
     "full_time_taught_count": 26,
     "duration_summary": {
       "months_12": 24,
-      "months_21": 2
+      "months_21": 1,
+      "months_24": 1
     },
     "excluded": [
       {
@@ -241,10 +242,10 @@
       "faculty_group": "Nottingham University Business School China",
       "category": "finance_economics",
       "category_ko": "금융·회계",
-      "duration_months": 21,
-      "duration_official": "21 months",
-      "start_date_official": "September each year",
-      "intake_2027_status": "confirmed_recurring_start_date",
+      "duration_months": 24,
+      "duration_official": "24 months",
+      "start_date_official": "September 2025",
+      "intake_2027_status": "pending_stale_start_date_text",
       "english_profile": "standard_6_5",
       "academic_requirement": "UK 2:1 or international equivalent",
       "background_requirement": "Basic accounting knowledge demonstrated through Financial Accounting and Financial Reporting study or recognised professional accounting qualification modules/examinations.",
