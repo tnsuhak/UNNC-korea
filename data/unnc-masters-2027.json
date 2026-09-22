@@ -89,7 +89,12 @@
       ]
     },
     "note": "The live fee page does not present these amounts as confirmed 2027 tuition. Keep 2027 tuition pending until UNNC publishes the relevant academic-year fees.",
-    "source": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/fees-and-scholarships/index.aspx"
+    "source": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/fees-and-scholarships/index.aspx",
+    "payment_policy": {
+      "commencing_students_installments": false,
+      "registration_requires_full_year_tuition_payment": true,
+      "continuing_students_financial_hardship_installment_review": "available_after_at_least_one_year_subject_to_individual_review"
+    }
   },
   "scholarships_2027": {
     "confirmed": [
@@ -125,7 +130,17 @@
         "status": "Current policy page"
       }
     ],
-    "source": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/fees-and-scholarships/international.aspx"
+    "source": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/fees-and-scholarships/international.aspx",
+    "selection": {
+      "global_scholarships_application_required": true,
+      "statement_max_words": 500,
+      "university_gpa_important": true,
+      "english_language_not_used_in_selection": true,
+      "ambassador_expectation_hours": 30,
+      "deferrable_to_next_academic_year": false,
+      "two_year_course_global_scholarship_scope": "first_year_only"
+    },
+    "stackability_status": "not_asserted_public_page_does_not_define_all_combinations"
   },
   "application_2027": {
     "general_deadline_status": "pending",
