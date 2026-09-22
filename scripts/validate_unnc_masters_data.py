@@ -52,7 +52,7 @@ assert {x["deadline"] for x in confirmed} == {"2027-05-31"}
 assert d["application_2027"]["general_deadline_status"] == "pending"
 assert d["tuition_and_costs"]["tuition_2027_status"] == "pending"
 
-detail_paths = [c.get("detail_path") for c in courses if c.get("detail_path")]\nassert len(detail_paths) == 14, f"Expected 14 priority detail pages in data, got {len(detail_paths)}"\nassert len(set(detail_paths)) == 6, "Duplicate detail path"\nassert all(c.get("curriculum_2027_28_status") == "subject_to_change" for c in courses if c.get("detail_path"))\n\nprint("UNNC masters data validation passed")
+detail_paths = [c.get("detail_path") for c in courses if c.get("detail_path")]\nassert len(detail_paths) == 26, f"Expected 26 taught detail pages in data, got {len(detail_paths)}"\nassert len(set(detail_paths)) == 6, "Duplicate detail path"\nassert all(c.get("curriculum_2027_28_status") == "subject_to_change" for c in courses if c.get("detail_path"))\n\nprint("UNNC masters data validation passed")
 print("programmes:", len(courses))
 print("duration distribution:", durations)
 print("IELTS 6.0 group:", len(lower))
