@@ -108,7 +108,7 @@ def check_content(page: Path, rel: Path, doc, visible: str, schemas: list[dict])
 
 
 def check_taught_detail(rel: Path, doc, visible: str, schemas: list[dict], course: dict) -> None:
-    months = course["duration_months"]
+    if not doc.xpath('//nav[contains(@class,"nav")]//a[@href="/masters/mres/"]'):\n        fail(rel, "Taught detail desktop navigation missing MRes link")\n    if not doc.xpath('//*[@id="mobileNav"]//a[@href="/masters/mres/"]'):\n        fail(rel, "Taught detail mobile navigation missing MRes link")\n    months = course["duration_months"]
     h1 = norm(doc.xpath("//h1")[0].text_content()) if doc.xpath("//h1") else ""
     if course["name"] not in h1 and course["name"] != "Teaching English to Speakers of Other Languages":
         fail(rel, f"H1 {h1!r} does not contain programme name {course['name']!r}")
