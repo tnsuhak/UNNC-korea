@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_for": "UNNC Korea",
-  "verified_at": "2026-09-22",
+  "verified_at": "2026-09-23",
   "scope": {
     "audience": "International applicants from South Korea",
     "included": "Full-time postgraduate taught master's programmes",
@@ -441,8 +441,8 @@
       "category_ko": "마케팅",
       "duration_months": 12,
       "duration_official": "12 months",
-      "start_date_official": "September each year",
-      "intake_2027_status": "confirmed_recurring_start_date",
+      "start_date_official": "September 2025",
+      "intake_2027_status": "pending_stale_start_date_text",
       "english_profile": "standard_6_5",
       "academic_requirement": "UK 2:1 or international equivalent",
       "background_requirement": "Related subject such as management, business studies, marketing, economics, accounting, finance or communications.",
@@ -463,7 +463,8 @@
       "detail_path": "/masters/programmes/international-management-marketing-msc.html",
       "detail_status": "published_in_preview",
       "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
-      "curriculum_2027_28_status": "subject_to_change"
+      "curriculum_2027_28_status": "subject_to_change",
+      "intake_note": "2026-09-22 live check recorded Start date September 2025; the later \"September each year\" edit could not be re-verified, so 2027 intake stays pending until UNNC publishes 2027 dates."
     },
     {
       "slug": "finance-and-investment-economics-money-and-finance-msc",
@@ -677,7 +678,7 @@
       "additional_requirements": [
         "CV",
         "Academic writing sample around 1,000 words",
-        "Eligible applicants may be invited to interview"
+        "Interview with course admissions tutor required"
       ],
       "tuition": {
         "currency": "RMB",
@@ -939,8 +940,7 @@
       "academic_requirement": "UK 2:1 or international equivalent",
       "background_requirement": "Appropriate subject; high 2:2 in Electronic Engineering, Computer Engineering, Communication Engineering or equivalent may be reviewed case by case.",
       "additional_requirements": [
-        "CV",
-        "Portfolio demonstrating relevant design- or technology-related projects, practical experience and skills"
+        "CV"
       ],
       "tuition": {
         "currency": "RMB",
@@ -973,8 +973,7 @@
       "academic_requirement": "UK 2:1 or international equivalent",
       "background_requirement": "Appropriate subject; candidates from a wide range of science, technology and creative design fields.",
       "additional_requirements": [
-        "CV",
-        "Portfolio demonstrating relevant design- or technology-related projects, practical experience and skills"
+        "CV"
       ],
       "tuition": {
         "currency": "RMB",
@@ -987,7 +986,7 @@
       "study_mode": "Full time",
       "filter_group": "computing_engineering_design",
       "background_filter": "related_background",
-      "current_official_entry_note": "Current official course page requires both a CV and a portfolio demonstrating relevant design- or technology-related work.",
+      "current_official_entry_note": "Official course page Further Requirements list a CV only. The 2026-09-23 portfolio entry was reverted: it contradicted the 2026-09-22 live check and the search-indexed official page (Further Requirements: CV).",
       "detail_path": "/masters/programmes/innovative-design-msc.html",
       "detail_status": "published_in_preview",
       "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",

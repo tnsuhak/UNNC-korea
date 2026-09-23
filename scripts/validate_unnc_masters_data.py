@@ -40,7 +40,9 @@ pending_intakes = {c["name"] for c in courses if c["intake_2027_status"].startsw
 assert pending_intakes == {
     "Financial Technology",
     "Digital Screen Production",
-}
+    "Finance and Investment (Professional Accounting)",
+    "International Management (Marketing)",
+}, f"Unexpected pending 2027 intakes: {sorted(pending_intakes)}"
 
 stale_start_dates = {
     c["name"]: c["start_date_official"]
@@ -50,7 +52,14 @@ stale_start_dates = {
 assert stale_start_dates == {
     "Financial Technology": "September 2024",
     "Digital Screen Production": "September 2026",
-}
+    "Finance and Investment (Professional Accounting)": "September 2025",
+    "International Management (Marketing)": "September 2025",
+}, f"Unexpected stale start dates: {stale_start_dates}"
+assert all(
+    c["start_date_official"] == "September each year"
+    for c in courses
+    if c["intake_2027_status"] == "confirmed_recurring_start_date"
+), "Confirmed 2027 intake requires a recurring 'September each year' start date"
 
 gpa = d["global_requirements"]["south_korea_gpa"]["official_typical_minimums"]
 assert gpa == [
@@ -69,16 +78,21 @@ detail_paths = [c.get("detail_path") for c in courses if c.get("detail_path")]
 assert len(detail_paths) == 26, f"Expected 26 taught detail pages in data, got {len(detail_paths)}"
 assert len(set(detail_paths)) == 26, "Duplicate detail path"
 assert all(c.get("curriculum_2027_28_status") == "subject_to_change" for c in courses if c.get("detail_path"))
+assert d["scholarships_2027"]["selection"]["two_year_course_global_scholarship_scope"] == "first_year_only"
 assert all((DATA.parents[1] / p.lstrip("/")).is_file() for p in detail_paths), "Missing taught detail HTML"
 
+portfolio_courses = {
+    c["name"] for c in courses if any("portfolio" in r.lower() for r in c.get("additional_requirements", []))
+}
+assert portfolio_courses == {"Digital Screen Production"}, f"Unexpected portfolio requirements: {sorted(portfolio_courses)}"
 innovative_design = next(c for c in courses if c["name"] == "Innovative Design")
-assert innovative_design["additional_requirements"] == [
-    "CV",
-    "Portfolio demonstrating relevant design- or technology-related projects, practical experience and skills",
-]
-assert "requires both a CV and a portfolio" in innovative_design["current_official_entry_note"]
+assert innovative_design["additional_requirements"] == ["CV"]
 
-for required_interview_course in ("Applied Linguistics", "International Higher Education"):
+hsk = {c["name"]: r for c in courses for r in c.get("additional_requirements", []) if "HSK" in r}
+assert "HSK 4" in hsk.get("Finance and Investment (Professional Accounting)", "")
+assert "HSK 6" in " ".join(r for c in courses if c["name"].startswith("Interpreting") for r in c["additional_requirements"])
+
+for required_interview_course in ("Applied Linguistics", "International Higher Education", "Teaching English to Speakers of Other Languages"):
     course = next(c for c in courses if c["name"] == required_interview_course)
     assert "Interview with course admissions tutor required" in course["additional_requirements"]
 

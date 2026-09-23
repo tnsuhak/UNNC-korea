@@ -1,10 +1,19 @@
 #!/usr/bin/env python3
-"""Deterministic QA for the complete UNNC masters preview section."""
+"""Deterministic QA for the complete UNNC masters section.
+
+Runs the Taught/MRes data validators, then checks every masters HTML page for
+SEO basics, structured data, links, sitemap coverage, local assets and the
+content rules that keep the pages consistent with data/unnc-masters-2027.json
+and data/unnc-mres-2027.json.
+
+Usage: python3 scripts/validate_masters_site.py
+"""
 
 from __future__ import annotations
 
 import json
 import re
+import subprocess
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -54,6 +63,115 @@ def local_target_from_url(url_path: str) -> Path:
     return target
 
 
+# Research/attribution voice that SITE_RULES.md and policies.yaml keep out of ordinary pages.
+ATTRIBUTION_PATTERNS = (
+    r"공식 홈페이지에 따르면", r"홈페이지에 따르면", r"브로셔에 따르면", r"모집자료에 따르면", r"자료를 보면",
+    r"공식 자료 기준", r"공식\s?(과정\s?)?페이지(는|의|에|가)", r"공식 안내(상|는)", r"공식 PGR 자료",
+)
+DURATION_RE = re.compile(r"(12|21|24)\s*개월")
+GPA_SINGLE_CUTOFF_RE = re.compile(r"(2\.9|3\.1|3\.3|3\.5|3\.7)\s*(이면|만 넘으면|이상이면 (합격|가능))")
+STAT_MISCOUNT_RE = re.compile(r"21개월\s*2개|2개\s*21개월|21개월 과정인 두")
+
+
+def sentences(text: str) -> list[str]:
+    return [s.strip() for s in re.split(r"(?<=[?!])|(?<=[다요]\.)|(?<=\.)\s", text) if s.strip()]
+
+
+def check_content(page: Path, rel: Path, doc, visible: str, schemas: list[dict]) -> None:
+    path = public_path(page)
+    for pattern in ATTRIBUTION_PATTERNS:
+        match = re.search(pattern, visible)
+        if match:
+            fail(rel, f"source-attribution phrasing in visible copy: {match.group(0)!r}")
+    if STAT_MISCOUNT_RE.search(visible):
+        fail(rel, "duration statistics miscount (only Computer Science is 21 months)")
+    for sentence in sentences(visible):
+        if GPA_SINGLE_CUTOFF_RE.search(sentence) and not sentence.endswith("?"):
+            fail(rel, f"Korean GPA collapsed into a single cutoff: {sentence[:80]!r}")
+    for sentence in sentences(visible):
+        if ("장학" in sentence and re.search(r"(전체|2년|두 해|전 기간)\s*(과정\s*)?학비", sentence)
+                and not sentence.endswith("?") and not re.search(r"아닙니다|않습니다|아니라|첫해", sentence)):
+            fail(rel, f"scholarship described beyond first-year tuition: {sentence[:80]!r}")
+
+    course = TAUGHT_BY_PATH.get(path)
+    if course:
+        check_taught_detail(rel, doc, visible, schemas, course)
+    mres = MRES_BY_PATH.get(path)
+    if mres:
+        check_mres_detail(rel, doc, visible, schemas, mres)
+    if path.startswith("/masters/mres/"):
+        for sentence in sentences(visible):
+            if re.search(r"100%|50%", sentence) and not sentence.endswith("?") and not re.search(r"Taught|PGT", sentence):
+                fail(rel, f"Taught 100%/50% scholarship shown on MRes page without Taught context: {sentence[:80]!r}")
+        if re.search(r"2\.9\s*/\s*3\.3|3\.3\s*/\s*3\.7|3\.1\s*/\s*3\.5", visible):
+            fail(rel, "Taught South Korea GPA table copied onto MRes page")
+
+
+def check_taught_detail(rel: Path, doc, visible: str, schemas: list[dict], course: dict) -> None:
+    months = course["duration_months"]
+    h1 = norm(doc.xpath("//h1")[0].text_content()) if doc.xpath("//h1") else ""
+    if course["name"] not in h1 and course["name"] != "Teaching English to Speakers of Other Languages":
+        fail(rel, f"H1 {h1!r} does not contain programme name {course['name']!r}")
+    other = {m for m in map(int, DURATION_RE.findall(visible))} - {months}
+    if other:
+        fail(rel, f"{months}-month programme page mentions other durations {sorted(other)}")
+    summary = norm(" ".join(n.text_content() for n in doc.xpath('//*[@class="programme-pills" or @class="programme-summary"]')))
+    if f"{months}개월" not in summary:
+        fail(rel, f"hero/summary missing {months}개월")
+    ielts = "6.0" if course["english_profile"] == "lower_6_0" else "6.5"
+    if f"IELTS {ielts}" not in summary:
+        fail(rel, f"hero/summary missing IELTS {ielts}")
+    pending = course["intake_2027_status"].startswith("pending")
+    if pending:
+        if "2027 확인중" not in summary:
+            fail(rel, "pending 2027 intake must show '2027 확인중' in hero/summary")
+        if "2027년 9월" in summary:
+            fail(rel, "pending 2027 intake shown as 2027년 9월 in hero/summary")
+        for sentence in sentences(visible):
+            if "2027년 9월" in sentence and not sentence.endswith("?"):
+                fail(rel, f"pending intake page asserts 2027년 9월: {sentence[:80]!r}")
+    elif "2027년 9월" not in summary:
+        fail(rel, "confirmed recurring intake should show 2027년 9월 in hero/summary")
+    amount = f"{course['tuition']['amount_per_year']:,} RMB"
+    if amount not in visible or "참고값" not in visible:
+        fail(rel, f"tuition {amount} must appear and be labelled 참고값")
+    if "첫해" not in visible:
+        fail(rel, "scholarship first-year-only scope missing")
+    needs_portfolio = any("portfolio" in r.lower() for r in course.get("additional_requirements", []))
+    if not needs_portfolio and "포트폴리오" in visible:
+        fail(rel, "portfolio mentioned but not in data additional_requirements")
+    if needs_portfolio and "포트폴리오" not in visible:
+        fail(rel, "portfolio required by data but not mentioned")
+    for req, token in (("HSK 4", "HSK 4"), ("HSK 6", "HSK 6"), ("Interview with course admissions tutor required", "인터뷰")):
+        if any(req in r for r in course.get("additional_requirements", [])) and token not in visible:
+            fail(rel, f"additional requirement {req!r} not shown")
+    courses = [s for s in schemas if s.get("@type") == "Course"]
+    if courses and course["name"] not in courses[0].get("name", "") and "TESOL" not in courses[0].get("name", ""):
+        fail(rel, f"Course schema name {courses[0].get('name')!r} differs from data")
+
+
+def check_mres_detail(rel: Path, doc, visible: str, schemas: list[dict], mres: dict) -> None:
+    pills = norm(" ".join(n.text_content() for n in doc.xpath('//*[@class="mres-pills"]')))
+    for token in ("12개월", "2월·9월", "IELTS 6.0"):
+        if token not in pills:
+            fail(rel, f"MRes hero pills missing {token!r}")
+    for token in ("5.5", "지도교수", "Research Proposal", "1,000~3,000", "2025/26", "130,000 RMB", "발표 대기"):
+        if token not in visible:
+            fail(rel, f"MRes page missing {token!r}")
+    if re.search(r"[A-Za-z]{4,}(?: [A-Za-z,/&()-]+){6,}\.", norm(doc.xpath("//h1/following-sibling::p[1]")[0].text_content()) if doc.xpath("//h1/following-sibling::p[1]") else ""):
+        fail(rel, "MRes hero lead is English-only")
+
+
+for validator in ("validate_unnc_masters_data.py", "validate_unnc_mres_data.py"):
+    result = subprocess.run([sys.executable, str(ROOT / "scripts" / validator)], capture_output=True, text=True)
+    if result.returncode != 0:
+        fail(f"scripts/{validator}", (result.stdout + result.stderr).strip().splitlines()[-1] if (result.stdout + result.stderr).strip() else "failed")
+
+TAUGHT = json.loads((ROOT / "data" / "unnc-masters-2027.json").read_text(encoding="utf-8"))
+MRES = json.loads((ROOT / "data" / "unnc-mres-2027.json").read_text(encoding="utf-8"))
+TAUGHT_BY_PATH = {c["detail_path"]: c for c in TAUGHT["courses"]}
+MRES_BY_PATH = {c["detail_path"]: c for c in MRES["programmes"]}
+
 pages = sorted(MASTERS_ROOT.rglob("*.html"))
 if len(pages) != EXPECTED_HTML_COUNT:
     fail("masters", f"expected {EXPECTED_HTML_COUNT} HTML pages, found {len(pages)}")
@@ -79,6 +197,9 @@ for page in pages:
         continue
     parsed_pages[page] = doc
 
+    if doc.get("lang") != "ko":
+        fail(rel, f"html lang must be ko, found {doc.get('lang')!r}")
+
     h1s = doc.xpath("//h1")
     if len(h1s) != 1:
         fail(rel, f"expected exactly one H1, found {len(h1s)}")
@@ -95,6 +216,8 @@ for page in pages:
         fail(rel, "missing meta description")
     else:
         descriptions[description].append(str(rel))
+        if len(description) < 60:
+            fail(rel, f"meta description too short ({len(description)} chars)")
 
     robots = [v.lower().replace(" ", "") for v in doc.xpath('//meta[translate(@name,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz")="robots"]/@content')]
     if not robots or not any("index" in v and "follow" in v and "noindex" not in v for v in robots):
@@ -189,7 +312,7 @@ for page in pages:
                     fail(rel, f"broken absolute internal link {href}")
             else:
                 combined = f"{label} {href}".lower()
-                if any(term in combined for term in ("application portal", "how to apply", "/apply", "apply now")):
+                if any(term in combined for term in ("application portal", "how to apply", "how-to-apply", "/apply", "apply now", "apply.aspx", "application.aspx")):
                     fail(rel, f"direct application/how-to-apply external link exposed: {href}")
                 if anchor.get("target") == "_blank" and "noopener" not in (anchor.get("rel") or ""):
                     fail(rel, f"target=_blank link missing rel=noopener: {href}")
@@ -218,9 +341,14 @@ for page in pages:
             except Exception as exc:
                 fail(rel, f"could not verify target fragment {href}: {exc}")
 
-    visible_text = norm(doc.text_content()).lower()
-    if "자료 출처" in visible_text or "공식 확인 자료" in visible_text:
+    body_copy = html.fromstring(html.tostring(doc.xpath("//body")[0], encoding="unicode"))
+    for node in body_copy.xpath("//script|//style"):
+        node.drop_tree()
+    visible = norm(body_copy.text_content())
+    visible_text = visible.lower()
+    if "자료 출처" in visible_text or "공식 확인 자료" in visible_text or "official sources" in visible_text:
         fail(rel, "visible source box/label found")
+    check_content(page, rel, doc, visible, schemas)
 
     for asset in doc.xpath('//link[@href]/@href | //script[@src]/@src | //img[@src]/@src'):
         parsed = urlparse(asset)
@@ -229,6 +357,62 @@ for page in pages:
         target = local_target_from_url(parsed.path) if parsed.path.startswith("/") else (page.parent / parsed.path).resolve()
         if not target.exists():
             fail(rel, f"missing local asset {asset}")
+
+
+# Finder cards on /masters/programmes.html must mirror the Taught data file.
+finder_page = MASTERS_ROOT / "programmes.html"
+finder = parsed_pages.get(finder_page)
+if finder is not None:
+    cards = finder.xpath('//article[contains(concat(" ", normalize-space(@class), " "), " programme-card ")]')
+    if len(cards) != len(TAUGHT["courses"]):
+        fail("masters/programmes.html", f"expected {len(TAUGHT['courses'])} finder cards, found {len(cards)}")
+    by_href = {}
+    for card in cards:
+        hrefs = card.xpath(".//h2/a/@href")
+        if hrefs:
+            by_href[hrefs[0]] = card
+    for course in TAUGHT["courses"]:
+        card = by_href.get(course["detail_path"])
+        where = f"masters/programmes.html card {course['name']!r}"
+        if card is None:
+            fail(where, "missing or not linked to detail_path")
+            continue
+        if card.get("data-duration") != str(course["duration_months"]):
+            fail(where, f"data-duration {card.get('data-duration')} != {course['duration_months']}")
+        ielts = "6.0" if course["english_profile"] == "lower_6_0" else "6.5"
+        if card.get("data-ielts") != ielts:
+            fail(where, f"data-ielts {card.get('data-ielts')} != {ielts}")
+        if card.get("data-degree") != course["degree"]:
+            fail(where, f"data-degree {card.get('data-degree')} != {course['degree']}")
+        text = norm(card.text_content())
+        pending = course["intake_2027_status"].startswith("pending")
+        if pending != bool(card.xpath('.//*[contains(@class, "pending")]')):
+            fail(where, "2027 확인중 badge does not match data intake status")
+        tags = [norm(t.text_content()) for t in card.xpath('.//div[@class="extra-tags"]/b')]
+        reqs = " ".join(course.get("additional_requirements", [])).lower()
+        if ("portfolio" in reqs) != ("포트폴리오" in tags):
+            fail(where, f"portfolio tag {tags} does not match data")
+        if "interview with course admissions tutor required" in reqs and "인터뷰 필수" not in tags:
+            fail(where, f"mandatory interview should be tagged 인터뷰 필수, found {tags}")
+        if "인터뷰 필수" in tags and "interview with course admissions tutor required" not in reqs:
+            fail(where, "인터뷰 필수 tag without mandatory interview in data")
+        amount = f"RMB {course['tuition']['amount_per_year']:,}"
+        if amount not in text:
+            fail(where, f"tuition {amount} missing")
+    counts = Counter(c["duration_months"] for c in TAUGHT["courses"])
+    stats = norm(" ".join(n.text_content() for n in finder.xpath('//*[@class="list-hero-stats"]')))
+    for months, count in counts.items():
+        if f"{count}개 {months}개월" not in stats:
+            fail("masters/programmes.html", f"hero stats missing '{count}개 {months}개월' (found {stats!r})")
+
+# CSS url() references in masters stylesheets must resolve to real files.
+for css in sorted(list(MASTERS_ROOT.rglob("*.css")) + [ROOT / "assets" / "guide.css"]):
+    for ref in re.findall(r"url\(['\"]?([^'\")]+)['\"]?\)", css.read_text(encoding="utf-8")):
+        if ref.startswith(("data:", "http:", "https:", "#")):
+            continue
+        target = local_target_from_url(ref) if ref.startswith("/") else (css.parent / ref).resolve()
+        if not target.is_file():
+            fail(css.relative_to(ROOT), f"missing CSS asset {ref}")
 
 for value, locations in titles.items():
     if len(locations) > 1:
@@ -296,3 +480,6 @@ print(f"Taught detail pages: {len(taught_details)}")
 print(f"MRes detail pages: {len(mres_details)}")
 print(f"Unique titles/descriptions/canonicals: {len(titles)}/{len(descriptions)}/{len(canonicals)}")
 print(f"Sitemap masters URLs: {len(actual_masters_urls)}")
+print("Taught durations:", dict(sorted(Counter(c["duration_months"] for c in TAUGHT["courses"]).items())))
+print("IELTS 6.0 group:", sum(c["english_profile"] == "lower_6_0" for c in TAUGHT["courses"]))
+print("2027 intake pending:", sorted(c["name"] for c in TAUGHT["courses"] if c["intake_2027_status"].startswith("pending")))
