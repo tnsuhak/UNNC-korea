@@ -19,7 +19,9 @@
       '</div>' +
       '<div class="site-menu-grid">' +
         '<section class="site-menu-group"><h3><a href="/#information">학교소개 <small>메인에서 보기 →</small></a></h3><a href="/unnc-nottingham-degree-uk-campus.html">노팅엄 학위·영국 캠퍼스 연계</a><a href="/unnc-how-study-english-teaching.html">영어수업·수업방식</a></section>' +
-        '<section class="site-menu-group"><h3><a href="/#major">전공안내 <small>메인에서 보기 →</small></a></h3><a href="/unnc-programmes-careers.html">전공·대학원 진학</a><a href="/unnc-career-support-further-study.html">취업·대학원 지원</a></section>' +
+        '<section class="site-menu-group"><h3><a href="/#major">학부 전공 <small>메인에서 보기 →</small></a></h3><a href="/unnc-programmes-careers.html">학부 전공 전체보기</a></section>' +
+        '<section class="site-menu-group"><h3><a href="/masters/">석사과정 <small>2027 가이드 →</small></a></h3><a href="/masters/programmes.html">Taught 석사 26개</a><a href="/masters/mres/">MRes 연구석사 9개</a></section>' +
+        '<section class="site-menu-group"><h3><a href="/unnc-career-support-further-study.html">진로·성과 <small>상세보기 →</small></a></h3><a href="/unnc-career-support-further-study.html#outcomes">대학원 진학·취업 결과</a><a href="/unnc-career-support-further-study.html#support">커리어·대학원 진학 지원</a></section>' +
         '<section class="site-menu-group"><h3><a href="/#calendar">학비·장학금 <small>메인에서 보기 →</small></a></h3><a href="/unnc-tuition-scholarships-2027.html">2027 학비·장학금 상세</a></section>' +
         '<section class="site-menu-group"><h3><a href="/#rooms">숙소 <small>메인에서 보기 →</small></a></h3><a href="/unnc-accommodation-campus-life.html">기숙사·캠퍼스 생활</a><a href="/unnc-ningbo-china-life.html">닝보 유학생활</a></section>' +
         '<section class="site-menu-group"><h3><a href="/#campus">캠퍼스생활 <small>메인에서 보기 →</small></a></h3><a href="/unnc-sports-gym-fitness.html">스포츠·GYM 시설</a><a href="/unnc-clubs-student-organisations.html">동아리·학생단체</a><a href="/unnc-exchange-study-abroad.html">교환학생·Study Abroad</a></section>' +
