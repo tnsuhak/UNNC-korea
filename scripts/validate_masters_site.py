@@ -16,6 +16,7 @@ import re
 import subprocess
 import sys
 from collections import Counter, defaultdict
+from datetime import date
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 from xml.etree import ElementTree
@@ -70,7 +71,7 @@ ATTRIBUTION_PATTERNS = (
 )
 DURATION_RE = re.compile(r"(12|21|24)\s*개월")
 GPA_SINGLE_CUTOFF_RE = re.compile(r"(2\.9|3\.1|3\.3|3\.5|3\.7)\s*(이면|만 넘으면|이상이면 (합격|가능))")
-STAT_MISCOUNT_RE = re.compile(r"21개월\s*2개|2개\s*21개월|21개월 과정인 두")
+STAT_MISCOUNT_RE = re.compile(r"21개월\s*1개|1개\s*21개월|24개월\s*1개|1개\s*24개월|21개월 과정인 하나")
 
 
 def sentences(text: str) -> list[str]:
@@ -84,7 +85,7 @@ def check_content(page: Path, rel: Path, doc, visible: str, schemas: list[dict])
         if match:
             fail(rel, f"source-attribution phrasing in visible copy: {match.group(0)!r}")
     if STAT_MISCOUNT_RE.search(visible):
-        fail(rel, "duration statistics miscount (only Computer Science is 21 months)")
+        fail(rel, "duration statistics miscount (Computer Science and Professional Accounting are 21 months)")
     for sentence in sentences(visible):
         if GPA_SINGLE_CUTOFF_RE.search(sentence) and not sentence.endswith("?"):
             fail(rel, f"Korean GPA collapsed into a single cutoff: {sentence[:80]!r}")
@@ -108,7 +109,11 @@ def check_content(page: Path, rel: Path, doc, visible: str, schemas: list[dict])
 
 
 def check_taught_detail(rel: Path, doc, visible: str, schemas: list[dict], course: dict) -> None:
-    if not doc.xpath('//nav[contains(@class,"nav")]//a[@href="/masters/mres/"]'):\n        fail(rel, "Taught detail desktop navigation missing MRes link")\n    if not doc.xpath('//*[@id="mobileNav"]//a[@href="/masters/mres/"]'):\n        fail(rel, "Taught detail mobile navigation missing MRes link")\n    months = course["duration_months"]
+    if not doc.xpath('//nav[contains(@class,"nav")]//a[@href="/masters/mres/"]'):
+        fail(rel, "Taught detail desktop navigation missing MRes link")
+    if not doc.xpath('//*[@id="mobileNav"]//a[@href="/masters/mres/"]'):
+        fail(rel, "Taught detail mobile navigation missing MRes link")
+    months = course["duration_months"]
     h1 = norm(doc.xpath("//h1")[0].text_content()) if doc.xpath("//h1") else ""
     if course["name"] not in h1 and course["name"] != "Teaching English to Speakers of Other Languages":
         fail(rel, f"H1 {h1!r} does not contain programme name {course['name']!r}")
@@ -390,7 +395,7 @@ if finder is not None:
             fail(where, "2027 확인중 badge does not match data intake status")
         tags = [norm(t.text_content()) for t in card.xpath('.//div[@class="extra-tags"]/b')]
         reqs = " ".join(course.get("additional_requirements", [])).lower()
-        if ("portfolio" in reqs) != ("포트폴리오" in tags):
+        if ("portfolio" in reqs) != any("포트폴리오" in tag for tag in tags):
             fail(where, f"portfolio tag {tags} does not match data")
         if "interview with course admissions tutor required" in reqs and "인터뷰 필수" not in tags:
             fail(where, f"mandatory interview should be tagged 인터뷰 필수, found {tags}")
@@ -404,6 +409,17 @@ if finder is not None:
     for months, count in counts.items():
         if f"{count}개 {months}개월" not in stats:
             fail("masters/programmes.html", f"hero stats missing '{count}개 {months}개월' (found {stats!r})")
+    filter_values = finder.xpath('//*[@id="durationFilter"]/option/@value')
+    if filter_values != ["", "12", "21"]:
+        fail("masters/programmes.html", f"duration filter inconsistent with taught data: {filter_values}")
+
+# MRes cards must each lead to one of the nine programme detail pages.
+mres_hub = parsed_pages.get(MASTERS_ROOT / "mres" / "index.html")
+if mres_hub is not None:
+    hrefs = mres_hub.xpath('//a[@href]/@href')
+    for programme in MRES["programmes"]:
+        if programme["detail_path"] not in hrefs:
+            fail("masters/mres/index.html", f"MRes card missing link to {programme['detail_path']}")
 
 # CSS url() references in masters stylesheets must resolve to real files.
 for css in sorted(list(MASTERS_ROOT.rglob("*.css")) + [ROOT / "assets" / "guide.css"]):
@@ -428,6 +444,19 @@ og_asset = ROOT / EXPECTED_OG_IMAGE.lstrip("/")
 if not og_asset.is_file():
     fail("assets", f"OG image file missing: {EXPECTED_OG_IMAGE}")
 
+# Root social metadata belongs to the same preview PR as the masters pages.
+root_doc = html.fromstring((ROOT / "index.html").read_text(encoding="utf-8"))
+social_url = SITE_ORIGIN + "/assets/social/unnc-korea-share-20260909.jpg"
+for prop, expected in (("og:image", social_url), ("og:image:secure_url", social_url),
+                       ("og:image:width", "1200"), ("og:image:height", "630")):
+    actual = root_doc.xpath(f'//meta[@property="{prop}"]/@content')
+    if actual != [expected]:
+        fail("index.html", f"root {prop} must be {expected!r}, got {actual}")
+if root_doc.xpath('//meta[@name="twitter:card"]/@content') != ["summary_large_image"]:
+    fail("index.html", "root Twitter large image card missing")
+if not (ROOT / "assets/social/unnc-korea-share-20260909.jpg").is_file():
+    fail("assets/social", "root social share image missing")
+
 sitemap_path = ROOT / "sitemap.xml"
 try:
     sitemap = ElementTree.parse(sitemap_path)
@@ -447,6 +476,11 @@ try:
         lastmod = norm(node.findtext("sm:lastmod", default="", namespaces=namespace))
         if lastmod and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", lastmod):
             fail("sitemap.xml", f"invalid lastmod {lastmod!r} for {url}")
+        elif lastmod:
+            try:
+                date.fromisoformat(lastmod)
+            except ValueError:
+                fail("sitemap.xml", f"impossible lastmod date {lastmod!r} for {url}")
     expected_masters_urls = {SITE_ORIGIN + public_path(page) for page in pages}
     actual_masters_urls = {u for u in sitemap_urls if urlparse(u).path.startswith("/masters")}
     missing = sorted(expected_masters_urls - actual_masters_urls)

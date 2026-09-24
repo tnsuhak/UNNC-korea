@@ -14,10 +14,12 @@ assert not any("Business Administration" == c["name"] for c in courses), "Part-t
 durations = {}
 for c in courses:
     durations[c["duration_months"]] = durations.get(c["duration_months"], 0) + 1
-assert durations == {12: 24, 21: 1, 24: 1}, f"Unexpected duration distribution: {durations}"
+assert durations == {12: 24, 21: 2}, f"Unexpected duration distribution: {durations}"
+assert d["scope"]["duration_summary"] == {"months_12": 24, "months_21": 2, "months_24": 0}
 
-assert {c["name"] for c in courses if c["duration_months"] == 21} == {"Computer Science"}
-assert {c["name"] for c in courses if c["duration_months"] == 24} == {"Finance and Investment (Professional Accounting)"}
+assert {c["name"] for c in courses if c["duration_months"] == 21} == {
+    "Computer Science", "Finance and Investment (Professional Accounting)"
+}
 
 lower = {c["name"] for c in courses if c["english_profile"] == "lower_6_0"}
 assert lower == {
@@ -44,17 +46,17 @@ assert pending_intakes == {
     "International Management (Marketing)",
 }, f"Unexpected pending 2027 intakes: {sorted(pending_intakes)}"
 
-stale_start_dates = {
+pending_start_dates = {
     c["name"]: c["start_date_official"]
     for c in courses
     if c["intake_2027_status"].startswith("pending")
 }
-assert stale_start_dates == {
+assert pending_start_dates == {
     "Financial Technology": "September 2024",
     "Digital Screen Production": "September 2026",
-    "Finance and Investment (Professional Accounting)": "September 2025",
-    "International Management (Marketing)": "September 2025",
-}, f"Unexpected stale start dates: {stale_start_dates}"
+    "Finance and Investment (Professional Accounting)": "September each year",
+    "International Management (Marketing)": "September each year",
+}, f"Unexpected pending start dates: {pending_start_dates}"
 assert all(
     c["start_date_official"] == "September each year"
     for c in courses
@@ -84,9 +86,10 @@ assert all((DATA.parents[1] / p.lstrip("/")).is_file() for p in detail_paths), "
 portfolio_courses = {
     c["name"] for c in courses if any("portfolio" in r.lower() for r in c.get("additional_requirements", []))
 }
-assert portfolio_courses == {"Digital Screen Production"}, f"Unexpected portfolio requirements: {sorted(portfolio_courses)}"
+assert portfolio_courses == {"Digital Screen Production", "Innovative Design"}, f"Unexpected portfolio requirements: {sorted(portfolio_courses)}"
 innovative_design = next(c for c in courses if c["name"] == "Innovative Design")
-assert innovative_design["additional_requirements"] == ["CV"]
+assert innovative_design["additional_requirements"][0] == "CV"
+assert "confirm with admissions" in innovative_design["additional_requirements"][1]
 
 hsk = {c["name"]: r for c in courses for r in c.get("additional_requirements", []) if "HSK" in r}
 assert "HSK 4" in hsk.get("Finance and Investment (Professional Accounting)", "")
