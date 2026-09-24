@@ -409,9 +409,15 @@ if finder is not None:
     for months, count in counts.items():
         if f"{count}개 {months}개월" not in stats:
             fail("masters/programmes.html", f"hero stats missing '{count}개 {months}개월' (found {stats!r})")
-    filter_values = finder.xpath('//*[@id="durationFilter"]/option/@value')
-    if filter_values != ["", "12", "21"]:
-        fail("masters/programmes.html", f"duration filter inconsistent with taught data: {filter_values}")
+    for removed_filter in ("degreeFilter", "durationFilter"):
+        if finder.xpath(f'//*[@id="{removed_filter}"]'):
+            fail("masters/programmes.html", f"removed filter unexpectedly present: {removed_filter}")
+    for required_filter in ("groupFilter", "ieltsFilter", "backgroundFilter"):
+        if not finder.xpath(f'//*[@id="{required_filter}"]'):
+            fail("masters/programmes.html", f"required filter missing: {required_filter}")
+    background_values = finder.xpath('//*[@id="backgroundFilter"]/option/@value')
+    if background_values != ["", "open", "restricted"]:
+        fail("masters/programmes.html", f"simplified background filter values incorrect: {background_values}")
 
 # MRes cards must each lead to one of the nine programme detail pages.
 mres_hub = parsed_pages.get(MASTERS_ROOT / "mres" / "index.html")

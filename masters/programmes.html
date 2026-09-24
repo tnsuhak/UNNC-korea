@@ -5,13 +5,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UNNC 석사 전공 26개 | Taught Master 2027·IELTS·입학조건 | TNS유학</title>
-<meta name="description" content="노팅엄대학교 닝보 캠퍼스(UNNC) Full-time Postgraduate Taught 석사 26개 전공 전체보기. 분야, MSc·MA, 12·21개월, IELTS, 학부 전공조건으로 검색하고 비교하세요. MRes 9개는 별도 안내합니다.">
+<meta name="description" content="노팅엄대학교 닝보 캠퍼스(UNNC) Full-time Postgraduate Taught 석사 26개 전공 전체보기. 전공명과 분야·IELTS·지원 전공조건으로 검색하고 비교하세요. MRes 9개는 별도 안내합니다.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://unnc-korea.netlify.app/masters/programmes.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="UNNC Korea | TNS유학">
 <meta property="og:title" content="UNNC Taught 석사 전공 26개 전체보기">
-<meta property="og:description" content="전공명 검색과 분야·학위·기간·IELTS·학부 전공조건 필터로 UNNC Full-time Taught 석사 26개를 비교하세요. MRes 연구석사는 별도입니다.">
+<meta property="og:description" content="전공명 검색과 분야·IELTS·지원 전공조건 필터로 UNNC Full-time Taught 석사 26개를 비교하세요. MRes 연구석사는 별도입니다.">
 <meta property="og:url" content="https://unnc-korea.netlify.app/masters/programmes.html">
 <meta property="og:image" content="https://unnc-korea.netlify.app/assets/embedded/0cddcf1b60ebd2e7.webp">
 <meta property="og:locale" content="ko_KR">
@@ -38,7 +38,7 @@
   <div class="list-hero-inner">
     <div class="eyebrow">FULL-TIME POSTGRADUATE TAUGHT</div>
     <h1>UNNC Taught 석사 전공 <em>26개</em></h1>
-    <p>전공명으로 검색하거나 분야·학위·기간·IELTS·학부 전공조건을 선택해 한국학생에게 맞는 Postgraduate Taught 과정을 좁혀보세요. </p>
+    <p>전공명으로 검색하거나 분야·IELTS·지원 전공조건을 선택해 한국학생에게 맞는 Postgraduate Taught 과정을 좁혀보세요. </p>
     <div class="list-hero-stats"><span><b>24</b>개 12개월</span><span><b>2</b>개 21개월</span><span><b>5</b>개 IELTS 6.0</span><span><b>21</b>개 IELTS 6.5</span></div>
   </div>
 </header>
@@ -52,10 +52,8 @@
     </div>
     <div class="filter-grid">
       <div><label for="groupFilter">분야</label><select id="groupFilter"><option value="">전체 분야</option><option value="business_management">경영·국제경영</option><option value="finance_economics">금융·경제</option><option value="education_language">교육·언어</option><option value="international_media_policy">국제학·미디어</option><option value="psychology">심리</option><option value="computing_engineering_design">컴퓨터·공학·디자인</option></select></div>
-      <div><label for="degreeFilter">학위</label><select id="degreeFilter"><option value="">전체 학위</option><option value="MSc">MSc</option><option value="MA">MA</option></select></div>
-      <div><label for="durationFilter">기간</label><select id="durationFilter"><option value="">전체 기간</option><option value="12">12개월</option><option value="21">21개월</option></select></div>
       <div><label for="ieltsFilter">IELTS</label><select id="ieltsFilter"><option value="">전체 IELTS</option><option value="6.0">IELTS 6.0</option><option value="6.5">IELTS 6.5</option></select></div>
-      <div><label for="backgroundFilter">학부 전공조건</label><select id="backgroundFilter"><option value="">전체</option><option value="all_disciplines">전공 제한 없음</option><option value="all_except_business_management">비경영계열 지원</option><option value="language_specific">언어역량 조건</option><option value="related_background">관련 전공 필요</option></select></div>
+      <div><label for="backgroundFilter">지원 전공조건</label><select id="backgroundFilter"><option value="">전체</option><option value="open">전공 무관</option><option value="restricted">전공 조건 있음</option></select></div>
       <button id="resetFilters" type="button">필터 초기화</button>
     </div>
     <div class="result-line"><strong id="resultCount">26</strong>개 과정이 표시됩니다.<span>2027 학비는 아직 미확정이며 표시 금액은 현재 학비 참고값입니다.</span></div>
@@ -696,8 +694,6 @@
  if(btn&&mobile){btn.addEventListener('click',()=>{const o=mobile.classList.toggle('open');btn.setAttribute('aria-expanded',o?'true':'false')});mobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobile.classList.remove('open');btn.setAttribute('aria-expanded','false')}));}
  const search=document.getElementById('programmeSearch');
  const group=document.getElementById('groupFilter');
- const degree=document.getElementById('degreeFilter');
- const duration=document.getElementById('durationFilter');
  const ielts=document.getElementById('ieltsFilter');
  const background=document.getElementById('backgroundFilter');
  const cards=[...document.querySelectorAll('.programme-card')];
@@ -706,18 +702,19 @@
    const q=search.value.trim().toLowerCase();
    let visible=0;
    cards.forEach(card=>{
+     const backgroundOk=!background.value||
+       (background.value==='open'&&card.dataset.background==='all_disciplines')||
+       (background.value==='restricted'&&card.dataset.background!=='all_disciplines');
      const ok=(!q||card.dataset.search.includes(q)||card.dataset.name.includes(q))&&
        (!group.value||card.dataset.group===group.value)&&
-       (!degree.value||card.dataset.degree===degree.value)&&
-       (!duration.value||card.dataset.duration===duration.value)&&
        (!ielts.value||card.dataset.ielts===ielts.value)&&
-       (!background.value||card.dataset.background===background.value);
+       backgroundOk;
      card.hidden=!ok;if(ok)visible++;
    });
    count.textContent=visible;none.hidden=visible!==0;
  }
- [search,group,degree,duration,ielts,background].forEach(el=>el.addEventListener(el===search?'input':'change',apply));
- document.getElementById('resetFilters').addEventListener('click',()=>{search.value='';group.value='';degree.value='';duration.value='';ielts.value='';background.value='';apply();search.focus();});
+ [search,group,ielts,background].forEach(el=>el.addEventListener(el===search?'input':'change',apply));
+ document.getElementById('resetFilters').addEventListener('click',()=>{search.value='';group.value='';ielts.value='';background.value='';apply();search.focus();});
 })();
 </script>
 </body></html>
