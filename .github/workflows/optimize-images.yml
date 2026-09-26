@@ -18,6 +18,7 @@ on:
       - scripts/validate_masters_site.py
       - scripts/validate_unnc_masters_data.py
       - scripts/validate_unnc_mres_data.py
+      - scripts/sync_visible_faq_schema.py
       - .github/workflows/optimize-images.yml
 
 permissions:
@@ -47,18 +48,21 @@ jobs:
       - name: Check authoritative Korean tone
         run: python scripts/authoritative_tone.py
 
+      - name: Synchronise FAQ schema with visible FAQ
+        run: python scripts/sync_visible_faq_schema.py --write
+
       - name: Validate complete masters section
         run: python scripts/validate_masters_site.py
 
-      - name: Commit image extraction only when needed
+      - name: Commit deterministic QA fixes when needed
         shell: bash
         run: |
-          if git diff --quiet -- index.html assets/embedded; then
-            echo "No embedded-image extraction changes were needed."
+          if git diff --quiet -- index.html assets/embedded masters; then
+            echo "No deterministic QA fixes were needed."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html assets/embedded
-          git commit -m "Externalize homepage images without changing design"
+          git add index.html assets/embedded masters
+          git commit -m "Sync masters FAQ schema"
           git push origin "HEAD:${{ github.head_ref }}"
