@@ -138,10 +138,35 @@ def check_taught_detail(rel: Path, doc, visible: str, schemas: list[dict], cours
     elif "2027년 9월" not in summary:
         fail(rel, "confirmed recurring intake should show 2027년 9월 in hero/summary")
     amount = f"{course['tuition']['amount_per_year']:,} RMB"
-    if amount not in visible or "참고값" not in visible:
-        fail(rel, f"tuition {amount} must appear and be labelled 참고값")
-    if "첫해" not in visible:
-        fail(rel, "scholarship first-year-only scope missing")
+    if amount not in visible:
+        fail(rel, f"tuition {amount} missing")
+    if "2027 학비" not in visible or not re.search(r"아직 (?:공개되지 않았습니다|미공개)", visible):
+        fail(rel, "2027 tuition pending status missing")
+    if "장학금 100%·50%" in visible:
+        fail(rel, "programme detail page still exposes numeric scholarship teaser")
+    if "학비·지원제도 확인" not in visible:
+        fail(rel, "NEXT cost card must use '학비·지원제도 확인'")
+    if "지원 가능성과 2027 장학금 준비" in visible:
+        fail(rel, "consultation CTA still uses scholarship-preparation wording")
+
+    expected_rhythm = (
+        ("GRADUATE CAPABILITIES", True),
+        ("CAREERS", False),
+        ("TUITION", True),
+        ("NEXT", False),
+        ("FAQ", True),
+    )
+    for label, should_alt in expected_rhythm:
+        sections = doc.xpath(
+            f'//section[.//div[contains(concat(" ", normalize-space(@class), " "), " label ") and normalize-space()="{label}"]]'
+        )
+        if len(sections) != 1:
+            fail(rel, f"expected one {label} section, found {len(sections)}")
+            continue
+        classes = (sections[0].get("class") or "").split()
+        is_alt = "alt" in classes
+        if is_alt != should_alt:
+            fail(rel, f"{label} section background rhythm incorrect: classes={classes}")
     needs_portfolio = any("portfolio" in r.lower() for r in course.get("additional_requirements", []))
     if not needs_portfolio and "포트폴리오" in visible:
         fail(rel, "portfolio mentioned but not in data additional_requirements")
@@ -160,9 +185,36 @@ def check_mres_detail(rel: Path, doc, visible: str, schemas: list[dict], mres: d
     for token in ("12개월", "2월·9월", "IELTS 6.0"):
         if token not in pills:
             fail(rel, f"MRes hero pills missing {token!r}")
-    for token in ("5.5", "지도교수", "Research Proposal", "1,000~3,000", "2025/26", "130,000 RMB", "발표 대기"):
+    for token in ("5.5", "지도교수", "Research Proposal", "1,000~3,000", "2025/26", "130,000 RMB", "2027 학비"):
         if token not in visible:
             fail(rel, f"MRes page missing {token!r}")
+    if "아직 미공개" not in visible:
+        fail(rel, "MRes 2027 tuition pending status missing")
+    for stale in ("TUITION & FUNDING", "2027 MRes 전용 장학금", "100%·50%"):
+        if stale in visible:
+            fail(rel, f"MRes detail page contains stale scholarship/funding copy: {stale!r}")
+
+    expected_rhythm = (
+        ("RESEARCH OVERVIEW", False),
+        ("ENTRY REQUIREMENTS", True),
+        ("RESEARCH THEMES", False),
+        ("COURSE STRUCTURE", True),
+        ("2027 ENTRY", False),
+        ("TUITION", True),
+        ("NEXT", False),
+        ("FAQ", True),
+    )
+    for label, should_alt in expected_rhythm:
+        sections = doc.xpath(
+            f'//section[.//div[contains(concat(" ", normalize-space(@class), " "), " label ") and normalize-space()="{label}"]]'
+        )
+        if len(sections) != 1:
+            fail(rel, f"expected one {label} section, found {len(sections)}")
+            continue
+        classes = (sections[0].get("class") or "").split()
+        is_alt = "alt" in classes
+        if is_alt != should_alt:
+            fail(rel, f"{label} section background rhythm incorrect: classes={classes}")
     if re.search(r"[A-Za-z]{4,}(?: [A-Za-z,/&()-]+){6,}\.", norm(doc.xpath("//h1/following-sibling::p[1]")[0].text_content()) if doc.xpath("//h1/following-sibling::p[1]") else ""):
         fail(rel, "MRes hero lead is English-only")
 
@@ -465,6 +517,9 @@ if not (ROOT / "assets/social/unnc-korea-share-20260909.jpg").is_file():
 
 sitemap_path = ROOT / "sitemap.xml"
 try:
+    sitemap_raw = sitemap_path.read_text(encoding="utf-8")
+    if "\\n" in sitemap_raw:
+        fail("sitemap.xml", "literal \\n escape found; sitemap should use real line breaks")
     sitemap = ElementTree.parse(sitemap_path)
     namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
     url_nodes = sitemap.findall("sm:url", namespace)

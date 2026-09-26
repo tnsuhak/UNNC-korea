@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_for": "UNNC Korea",
-  "verified_at": "2026-09-22",
+  "verified_at": "2026-09-26",
   "scope": {
     "degree_type": "Master of Research (MRes)",
     "public_scope": "Full-time MRes",
@@ -15,7 +15,7 @@
     "note": "All nine current MRes programmes are listed by UNNC as full-time research degrees. Sustainable Energy and Building Technologies also has a part-time mode, but this Korean international-student guide focuses on full-time study."
   },
   "global_requirements": {
-    "academic": "Normally UK honours bachelor degree at 2:1 or international equivalent in a relevant subject; programme-specific subject requirements apply.",
+    "academic": "Normally UK honours bachelor degree at 2:1 or international equivalent; subject-background requirements vary by programme and some live course pages do not state a specific undergraduate subject restriction.",
     "south_korea_gpa_status": "no_mres_specific_south_korea_table_found_do_not_reuse_pgt_table",
     "supervisor_contact_required_before_application": true,
     "research_proposal": {
@@ -103,7 +103,7 @@
       ],
       "study_mode": "Full time",
       "english_profile": "IELTS 6.0 / each 5.5",
-      "background_summary": "Minimum UK 2:1 equivalent; relevant engineering background and research fit are important.",
+      "background_summary": "Minimum UK 2:1 equivalent. The live course page does not state a specific undergraduate subject restriction; research fit and supervisor alignment are central.",
       "research_theme_summary": "Smart grid, electric drives, power electronics, renewable energy, storage, control, EVs and AI in electrical engineering.",
       "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-research/programmes/prospectus.aspx?id=cb9ed1b7-3a5a-4fb0-afea-3366c08572d0&language=en-GB",
       "detail_path": "/masters/mres/electrical-engineering-mres.html",
@@ -121,7 +121,7 @@
       ],
       "study_mode": "Full time",
       "english_profile": "IELTS 6.0 / each 5.5",
-      "background_summary": "Minimum UK 2:1 equivalent; relevant engineering background and research fit are important.",
+      "background_summary": "Minimum UK 2:1 equivalent. The live course page does not state a specific undergraduate subject restriction; research fit and supervisor alignment are central.",
       "research_theme_summary": "Robotics, automation, signal processing, VLSI, telecommunications, sensing and related electronic systems research.",
       "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-research/Programmes/Prospectus.aspx?id=88027d51-8ff0-4670-a2de-592ef722e7c6&language=en-GB",
       "detail_path": "/masters/mres/electronic-engineering-mres.html",
@@ -175,7 +175,7 @@
       ],
       "study_mode": "Full time",
       "english_profile": "IELTS 6.0 / each 5.5",
-      "background_summary": "Engineering or Science background at UK 2:1 equivalent or above; relevant materials/manufacturing subject fit is assessed.",
+      "background_summary": "Bachelor of Engineering or Science at UK 2:1 equivalent or above. Relevant disciplines include Mechanical, Manufacturing, Materials, Aeronautical and Chemical Engineering.",
       "research_theme_summary": "Advanced materials, manufacturing, structures and related materials engineering research.",
       "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-research/Programmes/Prospectus.aspx?id=3e35967c-158d-4724-99c7-0ab3fa380a96&language=en-GB",
       "detail_path": "/masters/mres/materials-science-engineering-mres.html",
@@ -211,7 +211,7 @@
       ],
       "study_mode": "Full time",
       "english_profile": "IELTS 6.0 / each 5.5",
-      "background_summary": "Minimum UK 2:1 equivalent; relevant civil engineering/construction research fit is important.",
+      "background_summary": "Minimum UK 2:1 equivalent. The live course page does not state a specific undergraduate subject restriction; research fit and supervisor alignment are central.",
       "research_theme_summary": "Smart construction, GIS/information modelling, advanced surveying, structures, transport, geotechnics, construction management and data analysis.",
       "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-research/programmes/prospectus.aspx?id=2ac49901-fa9e-47a4-9945-2c394f17f540&language=en-GB",
       "detail_path": "/masters/mres/smart-construction-mres.html",
@@ -230,7 +230,7 @@
       "study_mode": "Full time",
       "part_time_available": true,
       "english_profile": "IELTS 6.0 / each 5.5",
-      "background_summary": "Bachelor of Engineering or Science at UK 2:1 equivalent or above. Relevant engineering/science background is required.",
+      "background_summary": "Bachelor of Engineering or Science at UK 2:1 equivalent or above. Relevant disciplines include Mechanical, Manufacturing, Materials, Aeronautical and Chemical Engineering.",
       "research_theme_summary": "Energy, architecture, environmental systems and sustainable building technologies research.",
       "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-research/programmes/prospectus.aspx?id=908beb52-ab98-45e5-b03a-606d1ac19058&language=en-GB",
       "detail_path": "/masters/mres/sustainable-energy-building-technologies-mres.html",

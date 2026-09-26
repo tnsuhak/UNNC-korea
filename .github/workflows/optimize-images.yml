@@ -7,8 +7,17 @@ on:
     paths:
       - index.html
       - unnc-*.html
+      - masters/**
+      - data/unnc-masters-2027.json
+      - data/unnc-mres-2027.json
+      - sitemap.xml
+      - robots.txt
+      - favicon.svg
       - scripts/optimize_embedded_images.py
       - scripts/authoritative_tone.py
+      - scripts/validate_masters_site.py
+      - scripts/validate_unnc_masters_data.py
+      - scripts/validate_unnc_mres_data.py
       - .github/workflows/optimize-images.yml
 
 permissions:
@@ -29,11 +38,17 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Install validation dependencies
+        run: python -m pip install --disable-pip-version-check lxml
+
       - name: Keep embedded images externalized
         run: python scripts/optimize_embedded_images.py
 
       - name: Check authoritative Korean tone
         run: python scripts/authoritative_tone.py
+
+      - name: Validate complete masters section
+        run: python scripts/validate_masters_site.py
 
       - name: Commit image extraction only when needed
         shell: bash
