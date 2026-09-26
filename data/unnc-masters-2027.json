@@ -1,0 +1,1030 @@
+{
+  "schema_version": 1,
+  "generated_for": "UNNC Korea",
+  "verified_at": "2026-09-23",
+  "scope": {
+    "audience": "International applicants from South Korea",
+    "included": "Full-time postgraduate taught master's programmes",
+    "full_time_taught_count": 26,
+    "duration_summary": {
+      "months_12": 24,
+      "months_21": 2,
+      "months_24": 0
+    },
+    "excluded": [
+      {
+        "programme": "Master of Business Administration",
+        "reason": "Part-time only"
+      },
+      {
+        "programme_group": "Postgraduate research / MRes",
+        "reason": "Separate research-degree dataset to be built later"
+      }
+    ]
+  },
+  "global_requirements": {
+    "academic_general": "Normally UK 2:1 or international equivalent in an appropriate subject; programme-specific requirements apply.",
+    "south_korea_gpa": {
+      "official_typical_minimums": [
+        {
+          "scale": 4,
+          "values": [
+            2.9,
+            3.3
+          ]
+        },
+        {
+          "scale": 4.3,
+          "values": [
+            3.1,
+            3.5
+          ]
+        },
+        {
+          "scale": 4.5,
+          "values": [
+            3.3,
+            3.7
+          ]
+        }
+      ],
+      "interpretation_note": "UNNC lists two typical minimum GPA figures for each scale without explaining a single universal programme mapping on the country page. Do not collapse these into one cutoff without programme-level confirmation.",
+      "source": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-taught/Entry-requirements/International-applicants.aspx?country=South+Korea&level=Postgraduate"
+    },
+    "english_profiles": {
+      "lower_6_0": {
+        "applies_to": [
+          "Computer Science",
+          "Urbanism and Sustainable Environments",
+          "Electronic Communications and Computer Engineering",
+          "Innovative Design",
+          "Intelligent Infrastructure and Management"
+        ],
+        "IELTS": "6.0 overall, no less than 5.5 in any element",
+        "PTE_Academic": "65 overall, minimum 59",
+        "TOEFL_iBT": "80 overall; minimum 17 Writing and Listening, 18 Reading, 20 Speaking"
+      },
+      "standard_6_5": {
+        "applies_to": "Other full-time PGT courses in this dataset",
+        "IELTS": "6.5 overall, no less than 6.0 in any element",
+        "PTE_Academic": "71 overall, minimum 65",
+        "TOEFL_iBT": "90 overall; minimum 19 Writing and Listening, 20 Reading, 22 Speaking"
+      }
+    },
+    "IELTS_one_skill_retake": true,
+    "english_source": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/entry-requirements/index.aspx"
+  },
+  "tuition_and_costs": {
+    "tuition_2027_status": "pending",
+    "current_official_reference_as_of_2026_09_22": {
+      "standard_international_pgt_rmb_per_year": 130000,
+      "supply_chain_management_rmb_per_year": 150000,
+      "mba_programme_rmb": 200000,
+      "accommodation_rmb_per_year_range": [
+        11000,
+        20000
+      ],
+      "estimated_total_annual_cost_rmb_range": [
+        160000,
+        190000
+      ]
+    },
+    "note": "The live fee page does not present these amounts as confirmed 2027 tuition. Keep 2027 tuition pending until UNNC publishes the relevant academic-year fees.",
+    "source": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/fees-and-scholarships/index.aspx",
+    "payment_policy": {
+      "commencing_students_installments": false,
+      "registration_requires_full_year_tuition_payment": true,
+      "continuing_students_financial_hardship_installment_review": "available_after_at_least_one_year_subject_to_individual_review"
+    }
+  },
+  "scholarships_2027": {
+    "confirmed": [
+      {
+        "name": "UNNC Provost International Excellence",
+        "value": "100% of first-year tuition",
+        "deadline": "2027-05-31",
+        "eligibility": "Full-time international postgraduate applicant with an offer",
+        "application": "Separate scholarship application and statement (maximum 500 words)"
+      },
+      {
+        "name": "UNNC Emerging Leaders",
+        "value": "50% of first-year tuition",
+        "deadline": "2027-05-31",
+        "eligibility": "Full-time international postgraduate applicant with an offer",
+        "application": "Separate scholarship application and statement (maximum 500 words)"
+      }
+    ],
+    "current_but_2027_deadline_pending": [
+      {
+        "name": "Zhejiang/Ningbo Government Scholarship",
+        "value": "30,000 RMB",
+        "status": "Current page still shows 31 May 2026; 2027 deadline pending"
+      },
+      {
+        "name": "Family Scholarship",
+        "value": "One-off 10% tuition fee reduction",
+        "status": "Current policy page"
+      },
+      {
+        "name": "Alumni Scholarship",
+        "value": "15% tuition fee reduction for maximum two years",
+        "status": "Current policy page"
+      }
+    ],
+    "source": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/fees-and-scholarships/international.aspx",
+    "selection": {
+      "global_scholarships_application_required": true,
+      "statement_max_words": 500,
+      "university_gpa_important": true,
+      "english_language_not_used_in_selection": true,
+      "ambassador_expectation_hours": 30,
+      "deferrable_to_next_academic_year": false,
+      "two_year_course_global_scholarship_scope": "first_year_only"
+    },
+    "stackability_status": "not_asserted_public_page_does_not_define_all_combinations"
+  },
+  "application_2027": {
+    "general_deadline_status": "pending",
+    "current_page_note": "As of 2026-09-22 the official page still states 30 June 2026 for September 2026 entry; do not reuse that as a 2027 deadline.",
+    "current_required_documents": [
+      "One recommendation letter",
+      "Academic transcripts and degree certificates (completed or results so far)",
+      "English language test score if available",
+      "Personal statement",
+      "Passport main pages",
+      "2-inch colour bareheaded photo with white background"
+    ],
+    "source": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/how-to-apply.aspx",
+    "current_2026_reference": {
+      "general_deadline": "2026-06-30",
+      "main_cycle_recommended_by": "2026-06-07 23:59 Beijing Time",
+      "condition_documents_normally_due": "2026-07-15",
+      "status": "reference_only_not_2027"
+    },
+    "processing_time_current": "approximately 4 to 6 weeks after completed application and supporting documents"
+  },
+  "sources": {
+    "course_index": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/index.aspx",
+    "course_specific_requirements": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/entry-requirements/course-specific.aspx",
+    "south_korea_entry": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-taught/Entry-requirements/International-applicants.aspx?country=South+Korea&level=Postgraduate",
+    "english_requirements": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/entry-requirements/index.aspx",
+    "fees": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/fees-and-scholarships/index.aspx",
+    "scholarships": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/fees-and-scholarships/international.aspx",
+    "how_to_apply": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/how-to-apply.aspx"
+  },
+  "courses": [
+    {
+      "slug": "entrepreneurship-and-innovation-management-msc",
+      "name": "Entrepreneurship and Innovation Management",
+      "degree": "MSc",
+      "faculty_group": "Nottingham University Business School China",
+      "category": "business_management",
+      "category_ko": "경영·창업",
+      "duration_months": 12,
+      "duration_official": "12 months",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Open to all disciplines.",
+      "additional_requirements": [
+        "CV",
+        "Personal Statement describing entrepreneurship/innovation interest",
+        "Value Positioning Statement (VPS) based on the official Value Proposition template"
+      ],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/course/prospectus.aspx?id=04defbde-710c-44f3-87f6-99ed18e3f681&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "business_management",
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/entrepreneurship-innovation-management-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "finance-and-investment-msc",
+      "name": "Finance and Investment",
+      "degree": "MSc",
+      "faculty_group": "Nottingham University Business School China",
+      "category": "finance_economics",
+      "category_ko": "금융·경제",
+      "duration_months": 12,
+      "duration_official": "12 months",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Business-related background with sufficient exposure to finance and accounting modules or degree.",
+      "additional_requirements": [],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-taught/Courses/Prospectus.aspx?id=b9d2c2cf-c783-468a-a31c-9f72e65cdfa4&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "finance_economics",
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/finance-investment-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "finance-and-investment-professional-accounting-msc",
+      "name": "Finance and Investment (Professional Accounting)",
+      "degree": "MSc",
+      "faculty_group": "Nottingham University Business School China",
+      "category": "finance_economics",
+      "category_ko": "금융·회계",
+      "duration_months": 21,
+      "duration_official": "21 months",
+      "start_date_official": "September each year",
+      "intake_2027_status": "pending_2027_specific_dates",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Basic accounting knowledge demonstrated through Financial Accounting and Financial Reporting study or recognised professional accounting qualification modules/examinations.",
+      "additional_requirements": [
+        "For international applicants, HSK 4 or above, subject to further assessment",
+        "Interview may be required due to limited places"
+      ],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=9c705f0a-9d6d-41d3-9484-85b4f6453302",
+      "study_mode": "Full time",
+      "filter_group": "finance_economics",
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/finance-investment-professional-accounting-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "financial-technology-msc",
+      "name": "Financial Technology",
+      "degree": "MSc",
+      "faculty_group": "Nottingham University Business School China",
+      "category": "finance_economics",
+      "category_ko": "핀테크·금융",
+      "duration_months": 12,
+      "duration_official": "12 months",
+      "start_date_official": "September 2024",
+      "intake_2027_status": "pending_stale_start_date_text",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Degree in Economics, Finance, Accounting, Business/Management, Computer Science, Mathematics or Engineering.",
+      "additional_requirements": [
+        "Interview may be required due to limited places"
+      ],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=7ceb0ca6-ecce-42bb-9e3b-5cf54a7d5d3f&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "finance_economics",
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/financial-technology-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "international-business-msc",
+      "name": "International Business",
+      "degree": "MSc",
+      "faculty_group": "Nottingham University Business School China",
+      "category": "business_management",
+      "category_ko": "국제경영",
+      "duration_months": 12,
+      "duration_official": "12 months",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Open to all disciplines except Business or Management related disciplines.",
+      "additional_requirements": [],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=20aff045-bf56-40b2-a45b-311bac5034c9&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "business_management",
+      "background_filter": "all_except_business_management",
+      "detail_path": "/masters/programmes/international-business-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "international-business-supply-chain-management-msc",
+      "name": "International Business (Supply Chain Management)",
+      "degree": "MSc",
+      "faculty_group": "Nottingham University Business School China",
+      "category": "business_management",
+      "category_ko": "공급망·물류",
+      "duration_months": 12,
+      "duration_official": "12 months",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Bachelor's degree in business, management, engineering or science-related discipline.",
+      "additional_requirements": [
+        "Jointly delivered with Ningbo China Institute for Supply Chain Innovation (NISCI)"
+      ],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 150000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/course/prospectus.aspx?id=d11461d0-0074-48e8-875a-e22bfdf63982&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "business_management",
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/supply-chain-management-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "international-management-msc",
+      "name": "International Management",
+      "degree": "MSc",
+      "faculty_group": "Nottingham University Business School China",
+      "category": "business_management",
+      "category_ko": "경영",
+      "duration_months": 12,
+      "duration_official": "12 months",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Business-related Bachelor's degree such as management, business studies, marketing, economics, accounting or finance.",
+      "additional_requirements": [],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=79708a83-5712-44b2-a7ab-f78c84681178",
+      "study_mode": "Full time",
+      "filter_group": "business_management",
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/international-management-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "international-management-business-analytics-msc",
+      "name": "International Management (Business Analytics)",
+      "degree": "MSc",
+      "faculty_group": "Nottingham University Business School China",
+      "category": "business_management",
+      "category_ko": "비즈니스 애널리틱스",
+      "duration_months": 12,
+      "duration_official": "12 months",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Related degree with substantial mathematical/statistical content, such as management, business studies, economics, accounting, finance, engineering, computer science, mathematics or statistics.",
+      "additional_requirements": [],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-taught/Courses/Prospectus.aspx?id=56d59fe3-de2d-4c11-97b7-3ac9e709567c",
+      "study_mode": "Full time",
+      "filter_group": "business_management",
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/business-analytics-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "international-management-marketing-msc",
+      "name": "International Management (Marketing)",
+      "degree": "MSc",
+      "faculty_group": "Nottingham University Business School China",
+      "category": "business_management",
+      "category_ko": "마케팅",
+      "duration_months": 12,
+      "duration_official": "12 months",
+      "start_date_official": "September each year",
+      "intake_2027_status": "pending_2027_specific_dates",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Related subject such as management, business studies, marketing, economics, accounting, finance or communications.",
+      "additional_requirements": [
+        "Official course page states applicants with degrees containing a substantial amount of marketing are excluded; re-check this wording before public explanatory copy"
+      ],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/course/prospectus.aspx?id=fcfceaed-897c-4151-9fe5-351112667b5d&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "business_management",
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/international-management-marketing-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change",
+      "intake_note": "2026-09-24 live course page says September each year. The recurring month does not confirm programme-specific 2027 dates."
+    },
+    {
+      "slug": "finance-and-investment-economics-money-and-finance-msc",
+      "name": "Finance and Investment (Economics, Money and Finance)",
+      "degree": "MSc",
+      "faculty_group": "Faculty of Humanities and Social Sciences / Economics",
+      "category": "finance_economics",
+      "category_ko": "경제·금융",
+      "duration_months": 12,
+      "duration_official": "12 months full-time",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Significant economics content and good performance in mathematics/quantitative modules involving calculus and statistics.",
+      "additional_requirements": [],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=0fa5b059-7366-49fc-bdba-8448bcbca23c&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "finance_economics",
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/finance-investment-economics-money-finance-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "economics-msc",
+      "name": "Economics",
+      "degree": "MSc",
+      "faculty_group": "Faculty of Humanities and Social Sciences / Economics",
+      "category": "finance_economics",
+      "category_ko": "경제",
+      "duration_months": 12,
+      "duration_official": "12 months full-time",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Significant economics content and good performance in mathematics.",
+      "additional_requirements": [],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=78c1a502-6857-419e-ab51-44b6e5bb3ef4&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "finance_economics",
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/economics-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "psychology-applied-msc",
+      "name": "Psychology (Applied)",
+      "degree": "MSc",
+      "faculty_group": "Faculty of Humanities and Social Sciences / Education and English",
+      "category": "psychology",
+      "category_ko": "심리",
+      "duration_months": 12,
+      "duration_official": "12 months full-time",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Open to graduates of any subject.",
+      "additional_requirements": [],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=f94e9b97-2f3f-489f-ae03-c72ebf6a484b&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "psychology",
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/psychology-applied-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "applied-linguistics-ma",
+      "name": "Applied Linguistics",
+      "degree": "MA",
+      "faculty_group": "Faculty of Humanities and Social Sciences / Education and English",
+      "category": "education_language",
+      "category_ko": "언어·교육",
+      "duration_months": 12,
+      "duration_official": "12 months full-time",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Open to graduates of any subject.",
+      "additional_requirements": [
+        "CV",
+        "Academic writing sample around 1,000 words",
+        "Interview with course admissions tutor required"
+      ],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/Course/Prospectus.aspx?id=1de2de90-8a72-45ad-b205-d87869adf2ae&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "education_language",
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/applied-linguistics-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "interpreting-translation-mandarin-english-ma",
+      "name": "Interpreting and Translation, Mandarin and English",
+      "degree": "MA",
+      "faculty_group": "Faculty of Humanities and Social Sciences / Education and English",
+      "category": "education_language",
+      "category_ko": "통번역·언어",
+      "duration_months": 12,
+      "duration_official": "12 months full-time",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Open to graduates of any subject with very strong English and Chinese language skills.",
+      "additional_requirements": [
+        "HSK 6 for non-Chinese speakers",
+        "Eligible applicants are invited to interview"
+      ],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=071f655d-a480-4039-9f80-5608de53e372&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "education_language",
+      "background_filter": "language_specific",
+      "detail_path": "/masters/programmes/interpreting-translation-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "international-higher-education-ma",
+      "name": "International Higher Education",
+      "degree": "MA",
+      "faculty_group": "Faculty of Humanities and Social Sciences / Education and English",
+      "category": "education_language",
+      "category_ko": "교육",
+      "duration_months": 12,
+      "duration_official": "12 months full-time",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Open to graduates of any subject.",
+      "additional_requirements": [
+        "Interview with course admissions tutor required"
+      ],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-taught/Courses/Prospectus.aspx?id=a17962f6-95e9-4c44-bcaa-829f644bdda1&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "education_language",
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/international-higher-education-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "tesol-ma",
+      "name": "Teaching English to Speakers of Other Languages",
+      "degree": "MA",
+      "faculty_group": "Faculty of Humanities and Social Sciences / Education and English",
+      "category": "education_language",
+      "category_ko": "TESOL·교육",
+      "duration_months": 12,
+      "duration_official": "12 months full-time",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Open to graduates of any subject.",
+      "additional_requirements": [
+        "CV",
+        "Academic writing sample around 1,000 words",
+        "Interview with course admissions tutor required"
+      ],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-taught/Courses/Prospectus.aspx?id=aba3bab7-9a44-4915-bb04-53cf3ce06deb&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "education_language",
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/tesol-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "international-communications-studies-ma",
+      "name": "International Communications Studies",
+      "degree": "MA",
+      "faculty_group": "Faculty of Humanities and Social Sciences / International Communications",
+      "category": "communications_media",
+      "category_ko": "커뮤니케이션·미디어",
+      "duration_months": 12,
+      "duration_official": "12 months full-time",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Open to graduates of any subject.",
+      "additional_requirements": [
+        "CV",
+        "Academic writing sample around 1,000 words"
+      ],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/course/prospectus.aspx?id=32eced62-f3f5-4a20-afea-e8a242382eba&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "international_media_policy",
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/international-communications-studies-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "digital-screen-production-ma",
+      "name": "Digital Screen Production",
+      "degree": "MA",
+      "faculty_group": "Faculty of Humanities and Social Sciences / International Communications",
+      "category": "communications_media",
+      "category_ko": "영상·미디어",
+      "duration_months": 12,
+      "duration_official": "12 months",
+      "start_date_official": "September 2026",
+      "intake_2027_status": "pending_specific_2026_start_date_only",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Open to graduates of any subject.",
+      "additional_requirements": [
+        "CV",
+        "Academic writing sample around 1,000 words",
+        "Film portfolio: HD MP4 H.264, 3-15 minutes, viewable/downloadable link",
+        "Production documentation including 300-word role/contribution statement and 5-15 page treatment or screenplay",
+        "Interview may be offered at admissions tutor discretion"
+      ],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-taught/Courses/Prospectus.aspx?id=4b50d3f2-ba36-40ac-889e-6f383d969b88&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "international_media_policy",
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/digital-screen-production-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "international-relations-world-history-ma",
+      "name": "International Relations and World History",
+      "degree": "MA",
+      "faculty_group": "Faculty of Humanities and Social Sciences / International Studies",
+      "category": "international_studies_policy",
+      "category_ko": "국제관계·역사",
+      "duration_months": 12,
+      "duration_official": "12 months full-time",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Open to graduates of any subject.",
+      "additional_requirements": [],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=8a50893a-4392-4c57-bf58-874f82d0b472&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "international_media_policy",
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/international-relations-world-history-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "international-relations-international-business-ma",
+      "name": "International Relations and International Business",
+      "degree": "MA",
+      "faculty_group": "Faculty of Humanities and Social Sciences / International Studies",
+      "category": "international_studies_policy",
+      "category_ko": "국제관계·비즈니스",
+      "duration_months": 12,
+      "duration_official": "12 months full-time",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Open to graduates of any subject.",
+      "additional_requirements": [],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=03442bfb-44af-4c1c-b46b-8cdcef3b952b&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "international_media_policy",
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/international-relations-international-business-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "international-public-policy-ma",
+      "name": "International Public Policy",
+      "degree": "MA",
+      "faculty_group": "Faculty of Humanities and Social Sciences / International Studies",
+      "category": "international_studies_policy",
+      "category_ko": "공공정책·국제학",
+      "duration_months": 12,
+      "duration_official": "12 months full-time",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "standard_6_5",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Open to graduates of any subject.",
+      "additional_requirements": [],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=14f6c929-3a8d-4303-92a7-7545cb893c7a&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "international_media_policy",
+      "background_filter": "all_disciplines",
+      "detail_path": "/masters/programmes/international-public-policy-ma.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "computer-science-msc",
+      "name": "Computer Science",
+      "degree": "MSc",
+      "faculty_group": "Faculty of Science and Engineering / Computer Science",
+      "category": "computer_science_engineering",
+      "category_ko": "컴퓨터·AI",
+      "duration_months": 21,
+      "duration_official": "21 months",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "lower_6_0",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Appropriate subject; non-Computer Science applicants should demonstrate relevant capability or experience.",
+      "additional_requirements": [
+        "CV",
+        "Non-Computer Science applicants should provide relevant supporting documents"
+      ],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-taught/Courses/Prospectus.aspx?id=4078931a-fd18-4c2a-810a-0642d82c861d&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "computing_engineering_design",
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/computer-science-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "urbanism-sustainable-environments-msc",
+      "name": "Urbanism and Sustainable Environments",
+      "degree": "MSc",
+      "faculty_group": "Faculty of Science and Engineering / Architecture and Built Environment",
+      "category": "design_built_environment",
+      "category_ko": "도시·건축·환경",
+      "duration_months": 12,
+      "duration_official": "12 months full-time",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "lower_6_0",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Relevant discipline such as Urban Planning/Design, Urban Studies, Architecture, Architectural Studies, Geosciences, Geography, Environmental Sciences, Civil Engineering, Built Environment, Surveying, Computer Science or closely related degree.",
+      "additional_requirements": [],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=899f5ca4-b300-44f6-9ff9-9a47fb345607&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "computing_engineering_design",
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/urbanism-sustainable-environments-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "electronic-communications-computer-engineering-msc",
+      "name": "Electronic Communications and Computer Engineering",
+      "degree": "MSc",
+      "faculty_group": "Faculty of Science and Engineering / Electrical and Electronic Engineering",
+      "category": "computer_science_engineering",
+      "category_ko": "전자·통신·컴퓨터공학",
+      "duration_months": 12,
+      "duration_official": "12 months",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "lower_6_0",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Appropriate subject; high 2:2 in Electronic Engineering, Computer Engineering, Communication Engineering or equivalent may be reviewed case by case.",
+      "additional_requirements": [
+        "CV"
+      ],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/Study-with-us/Postgraduate-taught/Courses/Prospectus.aspx?id=6f0bd050-3cb4-456a-8055-01181ea5ef50&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "computing_engineering_design",
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/electronic-communications-computer-engineering-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "innovative-design-msc",
+      "name": "Innovative Design",
+      "degree": "MSc",
+      "faculty_group": "Faculty of Science and Engineering / Mechanical, Materials and Manufacturing Engineering",
+      "category": "design_built_environment",
+      "category_ko": "디자인·공학",
+      "duration_months": 12,
+      "duration_official": "12 months full-time",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "lower_6_0",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Appropriate subject; candidates from a wide range of science, technology and creative design fields.",
+      "additional_requirements": [
+        "CV",
+        "Portfolio listed on programme prospectus but not on aggregated course-specific requirements page; confirm with admissions before application"
+      ],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=132c1b2a-fa12-4138-bb81-5f2f61b10708&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "computing_engineering_design",
+      "background_filter": "related_background",
+      "current_official_entry_note": "As of 2026-09-24 the live programme prospectus lists CV and portfolio, while the aggregated course-specific requirements table lists CV only. Do not assert an unqualified portfolio requirement; confirm with admissions before application.",
+      "detail_path": "/masters/programmes/innovative-design-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    },
+    {
+      "slug": "intelligent-infrastructure-management-msc",
+      "name": "Intelligent Infrastructure and Management",
+      "degree": "MSc",
+      "faculty_group": "Faculty of Science and Engineering / Civil Engineering",
+      "category": "design_built_environment",
+      "category_ko": "토목·인프라",
+      "duration_months": 12,
+      "duration_official": "12 months full-time",
+      "start_date_official": "September each year",
+      "intake_2027_status": "confirmed_recurring_start_date",
+      "english_profile": "lower_6_0",
+      "academic_requirement": "UK 2:1 or international equivalent",
+      "background_requirement": "Civil Engineering or a closely related discipline; high 2:2 may be reviewed case by case.",
+      "additional_requirements": [
+        "CV"
+      ],
+      "tuition": {
+        "currency": "RMB",
+        "amount_per_year": 130000,
+        "reference_status": "current_official_fee_page_as_of_2026-09-22",
+        "academic_year_2027_status": "pending",
+        "total_programme_fee_2027_status": "pending_do_not_infer"
+      },
+      "official_url": "https://www.nottingham.edu.cn/en/study-with-us/postgraduate-taught/courses/prospectus.aspx?id=18e9eea9-c910-4d37-a08f-1bc81daa2daa&language=en-GB",
+      "study_mode": "Full time",
+      "filter_group": "computing_engineering_design",
+      "background_filter": "related_background",
+      "detail_path": "/masters/programmes/intelligent-infrastructure-management-msc.html",
+      "detail_status": "published_in_preview",
+      "curriculum_reference": "current official programme page / academic year 2026-2027 where shown",
+      "curriculum_2027_28_status": "subject_to_change"
+    }
+  ]
+}
