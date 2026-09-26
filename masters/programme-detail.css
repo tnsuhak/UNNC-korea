@@ -22,3 +22,9 @@
 .navlinks .site-home:hover{background:#fff3d8;color:#6b5112}
 .mobile-nav .site-home{margin-top:14px;background:#fff9eb;color:#7a5d16;text-align:center;border:1px solid #e2cf99;border-bottom:1px solid #e2cf99;border-radius:3px;padding:12px 10px}
 .mobile-nav .site-home + .consult{margin-top:8px}
+
+/* Tuition is primary on programme pages; scholarships stay in the dedicated guide. */
+.cost-grid.tuition-only{grid-template-columns:minmax(0,520px)}
+.detail-notice.tuition-note{max-width:520px;margin-top:8px;background:transparent;border-left:0;padding:8px 0;font-size:10.5px}
+.detail-notice.tuition-note a{color:#667085;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:700px){.cost-grid.tuition-only{grid-template-columns:1fr}.detail-notice.tuition-note{max-width:none}}
